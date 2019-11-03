@@ -1,0 +1,5 @@
+---
+Name: silverstripe-template-project/mfa
+---
+SilverStripe\TOTP\RegisterHandler:
+  secret_length: 64

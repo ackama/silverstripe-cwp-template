@@ -1,0 +1,9 @@
+---
+Name: silverstripe-template-project/theme
+---
+SilverStripe\View\SSViewer:
+  themes:
+    - 'silverstripe-template-project'
+    - 'watea'
+    - 'starter'
+    - '$default'

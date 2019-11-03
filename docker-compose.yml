@@ -1,0 +1,81 @@
+version: "3.5"
+services:
+  app:
+    build:
+      context: ./docker
+    labels:
+      - "cwp.silverstripe.app.container"
+    ports:
+      - "9000:80"
+      - "9443:443"
+    depends_on:
+      - database
+    links:
+      - database
+      - smtp
+    environment:
+      APP_NAME: "SilverstripeTemplateProject"
+      APP_ENV: dev
+      SS_BASE_URL: https://localhost:9443
+      SS_DATABASE_CLASS: MySQLDatabase
+      SS_DATABASE_SERVER: database
+      SS_DATABASE_USERNAME: root
+      SS_DATABASE_PASSWORD:
+      SS_DATABASE_PORT: 3306
+      SS_DATABASE_NAME: app
+      SS_DEPRECATION_ENABLED: "TRUE"
+      SS_ENVIRONMENT_TYPE: dev
+      SS_DEFAULT_ADMIN_USERNAME: admin
+      SS_DEFAULT_ADMIN_PASSWORD: admin
+      SS_VENDOR_METHOD: symlink
+      SS_USE_BASIC_AUTH: 0
+      SS_DOCKER: 1
+      SS_SOLR_ENABLED: 1
+      MAX_EXECUTION_TIME: 90
+      XDEBUG_PROFILER_ENABLE: 0
+      XDEBUG_REMOTE_AUTOSTART: 0
+      XDEBUG_REMOTE_ENABLE: 0
+      XDEBUG_REMOTE_HOST: host.docker.internal
+      XDEBUG_REMOTE_PORT: 9000
+    volumes:
+      - silverstripe-template-project-app-data-sync:/var/www:nocopy
+      - silverstripe-template-project-solr-data-sync:/var/solr:rw
+  database:
+    image: mysql:5.7
+    labels:
+      - "cwp.silverstripe.db.container"
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'YES'
+      MYSQL_USER: app
+      MYSQL_PASSWORD: app
+      MYSQL_DATABASE: app
+    restart: always
+    volumes:
+      - silverstripe-template-project-db-data:/var/lib/mysql
+  solr:
+    image: geerlingguy/solr:4.x
+    labels:
+      - "cwp.silverstripe.solr.container"
+    ports:
+      - "8983:8983"
+    command: ["/opt/solr/bin/solr", "start", "-p", "8983", "-s", "/var/solr", "-f"]
+    volumes:
+      - silverstripe-template-project-solr-data-sync:/var/solr:rw
+  smtp:
+    image: djfarrelly/maildev
+    labels:
+      - "cwp.silverstripe.smtp.container"
+    ports:
+      - "1080:80"
+    restart: always
+volumes:
+  silverstripe-template-project-app-data-sync:
+    driver: local
+    driver_opts:
+      type: none
+      device: $PWD
+      o: bind
+  silverstripe-template-project-db-data:
+  silverstripe-template-project-solr-data-sync:

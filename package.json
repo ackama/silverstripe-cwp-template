@@ -1,0 +1,39 @@
+{
+  "name": "silverstripe-template-project-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "silverstripe-template-project website",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "watch": "webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js --watch",
+    "build": "webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "package": "NODE_ENV=production webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "lint-js": "node_modules/.bin/eslint src/js",
+    "lint-sass": "node_modules/.bin/sass-lint -v",
+    "svgsprite": "svg-sprite --config config/svgsprite.json ./src/svg-icons/*.svg",
+    "prepare": "npm run ci:starter && npm run ci:watea",
+    "ci:starter": "yarn install --cwd themes/starter/ --frozen-lockfile --non-interactive",
+    "ci:watea": "yarn install --cwd themes/watea/ --frozen-lockfile --non-interactive"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.3",
+    "css-loader": "^3.2.0",
+    "eslint": "^6.5.1",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.14.3",
+    "foundation-sites": "^6.5.3",
+    "laravel-mix": "^5.0.0",
+    "resolve-url-loader": "^3.1.0",
+    "sass": "^1.22.12",
+    "sass-lint": "^1.10.2",
+    "sass-loader": "^8.0.0",
+    "vue-template-compiler": "^2.6.10"
+  },
+  "dependencies": {
+    "@types/foundation-sites": "^6.4.3"
+  }
+}

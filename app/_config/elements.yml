@@ -1,0 +1,5 @@
+Name: silverstripe-template-project/elements-config
+---
+Page:
+  extensions:
+    - DNADesign\Elemental\Extensions\ElementalPageExtension
