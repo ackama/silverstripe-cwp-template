@@ -94,7 +94,7 @@ https://docker-sync.readthedocs.io/en/latest/getting-started/installation.html#w
 
 ##### Running Docker-sync
 
-In order to run the project on docker-sync, run these command on separate shells. Both
+In order to run the project on docker-sync, run these command on separate terminals. Both
 are services that must keep on running:
 
 * `docker-sync start -f` which will setup your local files shares
@@ -107,7 +107,7 @@ runtime environment with the shared volume created by docker-sync.
 ### Using your development environment
 
 * The website will be available at `https://localhost:9443`
-* Use `./shell` to log in into your local dev environment
+* Use `bin/console` to log in into your local dev environment
 * You will need to run `composer install --no-scripts`, `composer vendor-expose`
   (Read note below) and `npm install --dev` to make your dependencies available
   and build your project. It is recommended to do so inside you dev environment
@@ -119,7 +119,7 @@ runtime environment with the shared volume created by docker-sync.
 #### Runtime in your environment
 
 To kickstart your development, dependencies and building processes need to be
-run, ideally from inside your docker machine (`./shell`). Running these
+run, ideally from inside your docker machine (`bin/console`). Running these
 commands will be ready to build:
 
 ```
@@ -191,7 +191,7 @@ and the `app/_config.php` file.
 
 By default the engine is activated and running. You will need to manually
 execute the Configuration task and the Indexing tasks when you want. Otherwise
-the usage of Solr will fail. You do this by accessing your shell and executing:
+the usage of Solr will fail. You do this by accessing your console and executing:
 
 ```
 sake dev/tasks/Solr_Configure
@@ -209,7 +209,7 @@ sake dev/tasks/Solr_Reindex
 * Subsequently run `sake dev/build "flush=1"`
 
 ### Running tests
-In `./shell` run `vendor/bin/phpunit`
+In `bin/console` run `vendor/bin/phpunit`
 
 ### Deploying outside of CWP
 

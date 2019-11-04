@@ -18,6 +18,5 @@ syncs:
       - Dockerfile
       - docker-compose.yml
       - docker-sync.yml
-      - ./shell
-      - ./solr
+      - bin/console
       - public/resources
