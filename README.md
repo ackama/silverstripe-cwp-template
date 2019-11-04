@@ -1,16 +1,34 @@
 # Silverstripe CWP Template Project
 
-## Meta Section
+## Meta README
 
-_Erase this section after going through it_
+_You can erase this section after completing it_
 
-Defaults for namespaces and prefixes have been chosen so they are easily replaceable after copying this project. Please do the following replacements:
+### Pre-project
+
+CWP accounts/environments take up a long time to get setup. Make sure this has
+been requested before removing comment.
+
+CWP will need a personal account for each of your developers. It will also require
+a Release Manager role. Make a list of people with e-mail, name and role. Attach the list with
+your request to your client. With this information they will be able to create the request and
+immediately provide Ackama with the required permission to start using the account
+
+Please read our [SilverStripe CWP Project Management](https://github.com/ackama/wiki/wiki/SilverStripe-CWP-Project-Management) wiki page  for more thorough information regarding managing a CWP project.
+
+Also refer to our [Ackama README Template](https://github.com/ackama/wiki/wiki/Ackama-README-Template) wiki page to better customise this README
+
+### Project Setup
+
+Defaults for namespaces and prefixes have been chosen so they are easily replaceable after
+copying this project. Please do the following replacements:
 
 * Replace `silverstripe-template-project` in all files with the name of your project.
 * Replace `SilverstripeTemplateProject` in all files with the namespace of your project.
 * Rename `themes/silverstripe-template-project` to the name of the template of your project.
 
-In the case that the project uses a Heroku Test instance, please configure according to this section [Heroku Config]
+In the case that the project uses a Heroku Test instance, please configure according to
+this section [Heroku Config]
 
 Current maintainers: matias.halles@ackama.com
 
