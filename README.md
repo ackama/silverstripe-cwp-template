@@ -20,6 +20,19 @@ Also refer to our [Ackama README Template](https://github.com/ackama/wiki/wiki/A
 
 ### Project Setup
 
+#### Clone and Clean
+
+Clone this repository, remove its `.git` directory and initialise it as a new repository:
+
+```
+$ git clone git@bitbucket.org:rabidtech/silverstripe-cwp-template.git your-project
+$ cd your-project
+$ rm -rf .git
+$ git init 
+```
+
+#### Rename Resources
+
 Defaults for namespaces and prefixes have been chosen so they are easily replaceable after
 copying this project. Please do the following replacements:
 
@@ -27,11 +40,6 @@ copying this project. Please do the following replacements:
 * Replace `SilverstripeTemplateProject` in all files with the namespace of your project.
 * Replace `silverstripe-template-theme` in all files with the name of your theme.
 * Rename `themes/silverstripe-template-theme` to the name of the template of your project.
-
-In the case that the project uses a Heroku Test instance, please configure according to
-this section [Heroku Config]
-
-Current maintainers: matias.halles@ackama.com
 
 ## Purpose
 
