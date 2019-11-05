@@ -3,16 +3,16 @@ const mix = require('laravel-mix');
 mix.sourceMaps();
 
 mix
-  .sass('themes/silverstripe-template-project/src/scss/main.scss', 'themes/silverstripe-template-project/dist/css/')
+  .sass('themes/silverstripe-template-theme/src/scss/main.scss', 'themes/silverstripe-template-theme/dist/css/')
   .options({
     processCssUrls: false,
   });
 
-mix.js('themes/silverstripe-template-project/src/js/main.js', 'themes/silverstripe-template-project/dist/js/');
+mix.js('themes/silverstripe-template-theme/src/js/main.js', 'themes/silverstripe-template-theme/dist/js/');
 
-mix.copyDirectory('themes/silverstripe-template-project/src/ico', 'themes/silverstripe-template-project/dist/ico/');
-mix.copyDirectory('themes/silverstripe-template-project/src/img', 'themes/silverstripe-template-project/dist/img/');
-mix.copyDirectory('themes/silverstripe-template-project/src/fonts', 'themes/silverstripe-template-project/dist/fonts/');
+mix.copyDirectory('themes/silverstripe-template-theme/src/ico', 'themes/silverstripe-template-theme/dist/ico/');
+mix.copyDirectory('themes/silverstripe-template-theme/src/img', 'themes/silverstripe-template-theme/dist/img/');
+mix.copyDirectory('themes/silverstripe-template-theme/src/fonts', 'themes/silverstripe-template-theme/dist/fonts/');
 
 mix
   .sass('modules/documents-library/scss/documents-library.scss', 'modules/documents-library/dist/css/')

@@ -59,11 +59,11 @@
             "web.config"
         ],
         "expose": [
-            "themes/silverstripe-template-project/dist/css",
-            "themes/silverstripe-template-project/dist/fonts",
-            "themes/silverstripe-template-project/dist/ico",
-            "themes/silverstripe-template-project/dist/img",
-            "themes/silverstripe-template-project/dist/js"
+            "themes/silverstripe-template-theme/dist/css",
+            "themes/silverstripe-template-theme/dist/fonts",
+            "themes/silverstripe-template-theme/dist/ico",
+            "themes/silverstripe-template-theme/dist/img",
+            "themes/silverstripe-template-theme/dist/js"
         ]
     },
     "config": {

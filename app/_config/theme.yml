@@ -3,7 +3,7 @@ Name: silverstripe-template-project/theme
 ---
 SilverStripe\View\SSViewer:
   themes:
-    - 'silverstripe-template-project'
+    - 'silverstripe-template-theme'
     - 'watea'
     - 'starter'
     - '$default'

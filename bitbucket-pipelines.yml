@@ -61,7 +61,7 @@ definitions:
           - composer vendor-expose
           - npm ci
           - npm run package
-          - git add --force --all themes/silverstripe-template-project/dist/
+          - git add --force --all themes/silverstripe-template-theme/dist/
           - git commit --allow-empty -m "Build version ${BITBUCKET_BUILD_NUMBER}"
           - git tag -am "Tagging for release ${BITBUCKET_BUILD_NUMBER}" release-${BITBUCKET_BUILD_NUMBER}
           - git push origin deployment

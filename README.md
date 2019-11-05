@@ -25,7 +25,8 @@ copying this project. Please do the following replacements:
 
 * Replace `silverstripe-template-project` in all files with the name of your project.
 * Replace `SilverstripeTemplateProject` in all files with the namespace of your project.
-* Rename `themes/silverstripe-template-project` to the name of the template of your project.
+* Replace `silverstripe-template-theme` in all files with the name of your theme.
+* Rename `themes/silverstripe-template-theme` to the name of the template of your project.
 
 In the case that the project uses a Heroku Test instance, please configure according to
 this section [Heroku Config]
