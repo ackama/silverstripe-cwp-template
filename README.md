@@ -156,7 +156,7 @@ commands will be ready to build:
 ```
 composer install --no-scripts
 composer vendor-expose
-npm ci
+npm install
 sake dev/build flush=1
 npm run watch
 ```
