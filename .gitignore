@@ -1,3 +1,7 @@
+# Remove these lines and commit lines
+package-lock.json
+composer.lock
+# / Remove these lines
 _ss_environment.php
 .env
 *.sspak

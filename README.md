@@ -43,6 +43,7 @@ copying this project. Please do the following replacements:
 
 #### Basic Configuration
 
+* Remove the `.gitignore` lines for `package-lock.json` and `composer.lock`
 * Replace your Sentry DSN, or remove file otherwise: `./app/_config/sentry.yml`
 
 ## Purpose
