@@ -9,6 +9,7 @@ _ss_environment.php
 .bashrc
 .bash_history
 .yarnrc
+/.cache
 /.config
 /.npm
 /.nano
