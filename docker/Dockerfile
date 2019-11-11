@@ -101,7 +101,7 @@ RUN \
         -reqexts SAN \
         -extensions SAN \
         -config /tmp/SSL_SAN_config \
-        -sha256 -days 3650; \
+        -sha256 -days 365; \
     # Adds both runtime users to the ssl-cert group
     usermod --append --groups ssl-cert root; \
     usermod --append --groups ssl-cert www-data;\
