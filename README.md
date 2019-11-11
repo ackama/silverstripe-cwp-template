@@ -138,7 +138,10 @@ runtime environment with the shared volume created by docker-sync.
 
 ### Using your development environment
 
-* The website will be available at `https://localhost:9443`
+* The website will be available at `https://localhost:9443`. You might need to override how your browser treats
+  *localhost* Insecure Certificates, as the docker machine uses a self-signed certificate:
+   * Chrome & Opera: Browse to chrome://flags/#allow-insecure-localhost and Enable the highlighted option.
+   * Firefox: you will be given the option to accept the risk of opening your localhost URL
 * Use `bin/console` to log in into your local dev environment
 * You will need to run `composer install --no-scripts`, `composer vendor-expose`
   (Read note below) and `npm install --dev` to make your dependencies available
