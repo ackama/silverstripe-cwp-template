@@ -51,7 +51,6 @@ services:
       MYSQL_USER: app
       MYSQL_PASSWORD: app
       MYSQL_DATABASE: app
-    restart: always
     volumes:
       - silverstripe-template-project-db-data:/var/lib/mysql
   solr:
@@ -69,7 +68,6 @@ services:
       - "cwp.silverstripe.smtp.container"
     ports:
       - "1080:80"
-    restart: always
 volumes:
   silverstripe-template-project-app-data-sync:
     driver: local
