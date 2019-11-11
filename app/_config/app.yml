@@ -3,7 +3,3 @@ Name: silverstripe-template-project
 ---
 SilverStripe\Core\Manifest\ModuleManifest:
   project: 'silverstripe-template-project'
-
-SilverStripe\SiteConfig\SiteConfig:
-  extensions:
-    - SilverstripeTemplateProject\SiteConfigExtension
