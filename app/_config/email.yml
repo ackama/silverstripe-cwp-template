@@ -1,4 +1,24 @@
 ---
+Name: email-config-production
+Only:
+  environment: 'prod'
+---
+SilverStripe\Control\Email\Email:
+  admin_email:
+    no-reply@silverstripe-template-project.cwp.govt.nz: "SilverstripeTemplateProject"
+---
+
+---
+Name: email-config-uat
+Only:
+  environment: 'test'
+---
+SilverStripe\Control\Email\Email:
+  admin_email:
+    no-reply@silverstripe-template-project-uat.cwp.govt.nz: "SilverstripeTemplateProject UAT"
+---
+
+---
 Name: silverstripe-template-project/mail-docker
 After:
   - '#emailconfig'
