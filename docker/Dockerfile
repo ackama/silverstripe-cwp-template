@@ -19,6 +19,8 @@ RUN apt-get -y update; \
         libicu-dev \
         libpng-dev \
         libjpeg-dev \
+        libfreetype6-dev \
+        libjpeg62-turbo-dev \
         libwebp-dev \
         locales \
         gcc \
@@ -62,9 +64,8 @@ RUN \
 
 # Installs PHP Extensions
 RUN docker-php-ext-configure intl; \
-    docker-php-ext-configure gd --with-png-dir=/usr/lib --with-jpeg-dir=/usr/lib --with-webp-dir=/usr/lib; \
-    docker-php-ext-install -j$(nproc) intl; \
-    docker-php-ext-install \
+    docker-php-ext-configure gd --with-png-dir=/usr/lib --with-jpeg-dir=/usr/lib --with-webp-dir=/usr/lib --with-freetype-dir=/usr/lib; \
+    docker-php-ext-install -j$(nproc) intl \
         pdo_mysql \
         mysqli \
         gd \
