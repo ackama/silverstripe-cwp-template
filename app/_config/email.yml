@@ -1,5 +1,5 @@
 ---
-Name: email-config-production
+Name: silverstripe-template-project/email-config-production
 Only:
   environment: 'prod'
 ---
@@ -9,7 +9,7 @@ SilverStripe\Control\Email\Email:
 ---
 
 ---
-Name: email-config-uat
+Name: silverstripe-template-project/email-config-uat
 Only:
   environment: 'test'
 ---

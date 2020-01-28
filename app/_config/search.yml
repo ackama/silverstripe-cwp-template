@@ -1,9 +1,9 @@
+---
 Name: silverstripe-template-project/searchindexes
 ---
 SilverStripe\FullTextSearch\Search\FullTextSearch:
   indexes:
     - SilverstripeCWPtemplate\SolrSearchIndex
-    - CWP\Search\Solr\CwpSolrIndex
 
 ---
 Name: silverstripe-template-project/searchconfig
