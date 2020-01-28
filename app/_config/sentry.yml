@@ -1,27 +1,11 @@
 ---
-# Version 2.0.x
-Name: silverstripe-template-project/sentryconfig-2
-After:
-  - 'sentryconfig'
-Except:
-  environment: dev
----
-PhpTek\Sentry\Adaptor\SentryClientAdaptor:
-  opts:
-    dsn: '[replace with valid DSN]'
-
-PhpTek\Sentry\Handler\SentryMonologHandler:
-  log_level: ERROR
-
----
-# Version 3.0.x
 Name: silverstripe-template-project/sentryconfig-3
 After:
-  - 'sentryconfig'
+  - 'sentry-config'
 ---
 PhpTek\Sentry\Adaptor\SentryAdaptor:
   opts:
-    dsn: '[replace width valid DSN]'
+    dsn: null
 
 PhpTek\Sentry\Log\SentryLogger:
   log_level: ERROR
