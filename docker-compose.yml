@@ -40,7 +40,21 @@ services:
       XDEBUG_REMOTE_HOST: host.docker.internal
       XDEBUG_REMOTE_PORT: 9000
     volumes:
-      - silverstripe-template-project-app-data-sync:/var/www:nocopy
+      - ./composer.json:/var/www/composer.json:cached
+      - ./composer.lock:/var/www/composer.lock:cached
+      
+      - ./package.json:/var/www/package.json:cached
+      - ./webpack.mix.json:/var/www/webpack.mix.json:cached
+
+      - ./phpunit.xml:/var/www/phpunit.xml:cached
+
+      ##
+      # Mount Application and Theme files
+      - ./app:/var/www/app:cached
+      - ./themes/silverstrip-template-theme:/var/www/themes/silverstrip-template-theme:cached
+      
+      ##
+      # Shared volume to handle solr configuration files
       - silverstripe-template-project-solr-data-sync:/var/solr:rw
   database:
     image: mysql:5.7
