@@ -2,7 +2,8 @@ version: "3.5"
 services:
   app:
     build:
-      context: ./docker
+      context: ./
+      dockerfile: docker/Dockerfile
     labels:
       - "cwp.silverstripe.app.container"
     ports:
@@ -70,11 +71,5 @@ services:
     ports:
       - "1080:80"
 volumes:
-  silverstripe-template-project-app-data-sync:
-    driver: local
-    driver_opts:
-      type: none
-      device: $PWD
-      o: bind
   silverstripe-template-project-db-data:
   silverstripe-template-project-solr-data-sync:

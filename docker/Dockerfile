@@ -82,11 +82,11 @@ RUN apt-get clean; \
     rm -r /var/lib/apt/lists/*
 
 # PHP Configuration
-COPY ["./conf/php/php.ini", "/usr/local/etc/php/php.ini"]
-COPY ["./conf/php/docker-php-ext*", "/usr/local/etc/php/conf.d/"]
+COPY ["./docker/conf/php/php.ini", "/usr/local/etc/php/php.ini"]
+COPY ["./docker/conf/php/docker-php-ext*", "/usr/local/etc/php/conf.d/"]
 
 # Apache Configuration
-COPY ["./conf/apache2/docker.conf", "/etc/apache2/sites-enabled/000-default.conf"]
+COPY ["./docker/conf/apache2/docker.conf", "/etc/apache2/sites-enabled/000-default.conf"]
 RUN \
     # Generates default SSL certificates
     make-ssl-cert generate-default-snakeoil; \
