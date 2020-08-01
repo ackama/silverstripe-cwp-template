@@ -4,8 +4,6 @@ services:
     build:
       context: ./
       dockerfile: docker/Dockerfile
-    labels:
-      - "cwp.silverstripe.app.container"
     ports:
       - "9000:80"
       - "9443:443"
@@ -58,8 +56,6 @@ services:
       - solr-data-sync:/var/solr:rw
   database:
     image: mysql:5.7
-    labels:
-      - "cwp.silverstripe.db.container"
     ports:
       - "3306:3306"
     environment:
@@ -71,8 +67,6 @@ services:
       - db-data:/var/lib/mysql
   solr:
     image: geerlingguy/solr:4.x
-    labels:
-      - "cwp.silverstripe.solr.container"
     ports:
       - "8983:8983"
     command: ["/opt/solr/bin/solr", "start", "-p", "8983", "-s", "/var/solr", "-f"]
@@ -80,8 +74,6 @@ services:
       - solr-data-sync:/var/solr:rw
   smtp:
     image: djfarrelly/maildev
-    labels:
-      - "cwp.silverstripe.smtp.container"
     ports:
       - "1080:80"
 volumes:
