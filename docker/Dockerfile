@@ -109,9 +109,57 @@ RUN \
     # Enables apache modules
     a2enmod headers rewrite ssl
 
-ENTRYPOINT ["docker-php-entrypoint"]
-
+# Explicitly set the WORKDIR so that when we run drush commands via
+# `docker-compose exec` they will work because the default working dir is the
+# Drupal root dir.
 WORKDIR /var/www
+
+# Add the directory that composer will put tools such as phpunit, drupal
+# console in to PATH so they are avaiable wihtout having to type the
+# 'vendor/bin/' prefix
+ENV PATH=$PATH:/var/www/vendor/bin
+
+RUN echo 'export LS_OPTIONS="--color=auto"' >> /root/.bashrc
+RUN echo 'alias ls="ls $LS_OPTIONS"' >> /root/.bashrc
+
+# Give the www-data user a shell so that we can 'su' and 'sudo' to that user
+RUN chsh -s /bin/bash www-data
+
+RUN echo 'export LS_OPTIONS="--color=auto"' >> /var/www/.bashrc
+RUN echo 'alias ls="ls $LS_OPTIONS"' >> /var/www/.bashrc
+
+## Install SilverStripe
+
+# Copy the composer files in so they are available for the 'composer install'
+# command later in this file
+COPY ["./composer.json", "/var/www/composer.json"]
+COPY ["./composer.lock", "/var/www/composer.lock"]
+
+# Copy public webroot. If this directory doesn't exist, the webroot will be
+# assumed to be the current working directory when installing
+COPY public /var/www/public
+
+# Copy application files
+COPY app /var/www/app
+COPY themes/silverstripe-template-theme /var/www/themes/silverstripe-template-theme
+COPY components /var/www/components
+
+# Install application
+RUN composer install 
+
+# Finally make the www-user own all files in /var/www
+RUN chown -R www-data:www-data /var/www
+
+# Remove the composer files from the image because we will mount our own copies
+# when we start the container. Removing the files should help avoid confusing
+# situations where the old files are still around because we made an error with
+# the volume mount.
+RUN rm composer.json composer.lock
+
+# Switch to our www-data user
+USER www-data
+
+ENTRYPOINT ["docker-php-entrypoint"]
 
 EXPOSE 80
 CMD ["apache2-foreground"]
