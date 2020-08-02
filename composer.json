@@ -5,7 +5,7 @@
     "homepage": "https://ackama.com",
     "license": "BSD-3-Clause",
     "require": {
-        "php": ">=7.1.0",
+        "php": ">=7.2.0",
         "silverstripe/totp-authenticator": "^4.0",
         "silverstripe/html5": "^2.0",
         "silverstripe/recipe-plugin": "^1.3",
