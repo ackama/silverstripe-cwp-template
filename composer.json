@@ -44,6 +44,7 @@
             "app/_config.php",
             "app/_config/blog.yml",
             "app/_config/environmentcheck.yml",
+            "app/_config/mimevalidator.yml",
             "app/_config/mysite.yml",
             "app/_config/search.yml",
             "app/src/Page.php",
