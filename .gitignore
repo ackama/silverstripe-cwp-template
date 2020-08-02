@@ -65,7 +65,7 @@ _ss_environment.php
 /multivaluefield
 /neolayout
 /nginx
-/public
+/public/resources/
 /queuedjobs
 /redirectedurls
 /registry
