@@ -39,6 +39,13 @@
         ]
     },
     "extra": {
+        "expose": [
+            "themes/silverstripe-template-theme/dist/css",
+            "themes/silverstripe-template-theme/dist/fonts",
+            "themes/silverstripe-template-theme/dist/ico",
+            "themes/silverstripe-template-theme/dist/img",
+            "themes/silverstripe-template-theme/dist/js"
+        ],
         "project-files-installed": [
             "app/.htaccess",
             "app/_config.php",
@@ -58,13 +65,6 @@
             "public/index.php",
             "public/web.config",
             "web.config"
-        ],
-        "expose": [
-            "themes/silverstripe-template-theme/dist/css",
-            "themes/silverstripe-template-theme/dist/fonts",
-            "themes/silverstripe-template-theme/dist/ico",
-            "themes/silverstripe-template-theme/dist/img",
-            "themes/silverstripe-template-theme/dist/js"
         ]
     },
     "config": {
