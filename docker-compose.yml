@@ -5,8 +5,8 @@ services:
       context: ./
       dockerfile: docker/Dockerfile
     ports:
-      - "9000:80"
-      - "9443:443"
+      - "80:80"
+      - "443:443"
     depends_on:
       - database
     links:
@@ -15,7 +15,7 @@ services:
     environment:
       APP_NAME: "SilverstripeTemplateProject"
       APP_ENV: dev
-      SS_BASE_URL: https://localhost:9443
+      SS_BASE_URL: https://localhost
       SS_DATABASE_CLASS: MySQLDatabase
       SS_DATABASE_SERVER: database
       SS_DATABASE_USERNAME: root
