@@ -48,17 +48,7 @@
         ],
         "project-files-installed": [
             "app/_config.php",
-            "app/_config/blog.yml",
-            "app/_config/environmentcheck.yml",
-            "app/_config/mimevalidator.yml",
-            "app/_config/mysite.yml",
-            "app/src/Page.php",
-            "app/src/PageController.php"
-        ],
-        "public-files-installed": [
-            ".htaccess",
-            "index.php",
-            "web.config"
+            "app/_config/mysite.yml"
         ]
     },
     "config": {
