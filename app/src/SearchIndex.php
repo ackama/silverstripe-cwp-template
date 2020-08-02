@@ -11,7 +11,7 @@ if (!class_exists(SolrIndex::class)) {
     return;
 }
 
-class SolrSearchIndex extends SolrIndex {
+class SearchIndex extends SolrIndex {
 
     public function init()
     {
