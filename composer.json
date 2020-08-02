@@ -47,7 +47,6 @@
             "themes/silverstripe-template-theme/dist/js"
         ],
         "project-files-installed": [
-            "app/.htaccess",
             "app/_config.php",
             "app/_config/blog.yml",
             "app/_config/environmentcheck.yml",
