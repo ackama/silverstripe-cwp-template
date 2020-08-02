@@ -1,5 +1,3 @@
 #!/usr/bin/env bash
 
-CONTAINER_ID=$(docker ps --filter "label=cwp.silverstripe.app.container" --format "{{.ID}}")
-
-docker exec -ti --workdir=/var/www --user 1000 --privileged $CONTAINER_ID bash
+docker-compose exec --user www-data app bash
