@@ -143,7 +143,7 @@ COPY public /var/www/public
 COPY app /var/www/app
 
 # Install application
-RUN composer install --no-script
+RUN composer install --no-scripts
 RUN composer vendor-expose
 RUN npm install --dev
 
