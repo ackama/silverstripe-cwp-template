@@ -59,10 +59,6 @@
         "public-files-installed": [
             ".htaccess",
             "index.php",
-            "install.php",
-            "public/.htaccess",
-            "public/index.php",
-            "public/web.config",
             "web.config"
         ]
     },
