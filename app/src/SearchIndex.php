@@ -11,7 +11,7 @@ if (!class_exists(SolrIndex::class)) {
     return;
 }
 
-class SilverstripeTemplateProjectSolrSearchIndex extends SolrIndex {
+class SolrSearchIndex extends SolrIndex {
 
     public function init()
     {
