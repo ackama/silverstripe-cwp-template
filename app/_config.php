@@ -14,6 +14,7 @@ $validator = PasswordValidator::create();
 // Settings are registered via Injector configuration - see passwords.yml in framework
 Member::set_password_validator($validator);
 
+// Sets Locale to English New Zealand
 i18n::set_locale('en_NZ');
 
 /**
