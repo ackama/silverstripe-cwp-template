@@ -154,9 +154,6 @@ RUN chown -R www-data:www-data /var/www
 # the volume mount.
 RUN rm composer.json composer.lock
 
-# Switch to our www-data user
-USER www-data
-
 ENTRYPOINT ["docker-php-entrypoint"]
 
 EXPOSE 80
