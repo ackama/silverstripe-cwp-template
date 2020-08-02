@@ -141,8 +141,6 @@ COPY public /var/www/public
 
 # Copy application files
 COPY app /var/www/app
-COPY themes/silverstripe-template-theme /var/www/themes/silverstripe-template-theme
-COPY components /var/www/components
 
 # Install application
 RUN composer install 
