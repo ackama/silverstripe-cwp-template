@@ -55,33 +55,32 @@ _Fill in purpose of this project_
 
 _Edit as necessary_
 
-Bitbucket pipelines need to be active and configured  
+CI pipelines need to be active and configured
 
 This project follows the following branch convention:
 **master** Main development branch
 **deployment** Deployment branch that gets tagged and tagged releases are deployed
 
-| **Environment**  | **URL**                                | **Hosting Platform** | **Git Branch**      | 
-|------------------|----------------------------------------|----------------------|---------------------|
-| Test             | _TODO_                                 | Heroku               | deployment (tagged) |
-| Staging / UAT    | _TODO_                                 | CWP                  | deployment (tagged) |
-| Production       | _TODO_                                 | CWP                  | deployment (tagged) |
+| **Environment** | **URL**                                | **Hosting Platform** | **Git Branch**      | 
+|-----------------|----------------------------------------|----------------------|---------------------|
+| Test            | _TODO_                                 | Heroku               | deployment (tagged) |
+| UAT             | _TODO_                                 | CWP                  | deployment (tagged) |
+| Production      | _TODO_                                 | CWP                  | deployment (tagged) |
 
 ### SSH access
 
 CWP does not provide SSH access.
-Heroku provides access but it's discouraged. Heroku allows command to be ran remotely.
 There will be no SSH access to the servers.
 
 ### Secrets
 
-The keys are stored encrypted in BitBucket pipelines.
+Secrets are stored encrypted in the CI's config
 
 ## Project Resources:
 
 | **Resource**    | **URL**                                                                       |
 |-----------------|-------------------------------------------------------------------------------|
-| Repository      | https://bitbucket.org/rabidtech/silverstripe-cwp-template |
+| Repository      | https://github.com/ackama/silverstripe-cwp-template |
 | Backlog URL     | [ Placeholder ] |
 | Invision        | [ Placeholder ] |
 
@@ -101,7 +100,7 @@ The keys are stored encrypted in BitBucket pipelines.
 
 ### Running the app
 
-Clone the project: `git clone git@bitbucket.org:rabidtech/rabidtech/silverstripe-cwp-template.git`
+Clone the project: `git clone git@github.com:ackama/silverstripe-cwp-template.git`
 
 Once the project is cloned, execute this command:
 
@@ -109,15 +108,14 @@ Once the project is cloned, execute this command:
 
 ### Using your development environment
 
-* The website will be available at `https://localhost:9443`. You might need to override how your browser treats
+* The website will be available at `https://localhost`. You might need to override how your browser treats
   *localhost* Insecure Certificates, as the docker machine uses a self-signed certificate:
    * Chrome & Opera: Browse to chrome://flags/#allow-insecure-localhost and Enable the highlighted option.
    * Firefox: you will be given the option to accept the risk of opening your localhost URL
 * Use `bin/console` to log in into your local dev environment
-* You will need to run `composer install --no-scripts`, `composer vendor-expose`
-  (Read note below) and `npm install --dev` to make your dependencies available
-  and build your project. It is recommended to do so inside you dev environment
-  as it is speedier.
+* If you want to have access to your dependencies in the host, run `composer install --no-scripts`,
+  `composer vendor-expose` and `npm install --dev`. These directories are not shared to avoid lowering
+  performance.
 * Run `npm run watch` in a separate view to build your assets in realtime. 
 * Whenever you make changes in your silverstripe app or theme, run `sake dev/build flush=1`
 * MailDev is available at http://localhost:1080
@@ -131,7 +129,7 @@ commands will be ready to build:
 ```
 composer install --no-scripts
 composer vendor-expose
-npm install
+npm install --dev
 sake dev/build flush=1
 npm run watch
 ```
@@ -140,7 +138,7 @@ npm run watch
 
 Your project's build process is configured to run automatically in a two-step process.
 
-* First the project gets tested and its assets get built and bundled in a bitbucket pipeline.
+* First the project gets tested and its assets get built and bundled in a CI pipeline.
 * Secondly, CWP deploys the silverstripe project.
 
 Although running the realtime packager or the bundler should render the same results, if you
@@ -152,7 +150,7 @@ npm ci
 npm run package
 ```
 
-#### Dependencies cache
+#### Dependencies cache [Optional]
 
 Currently `npm` and `composer` caches are held per project. It's possible to use a shared
 cache across all docker requests. In order to do so, you will need to create both
