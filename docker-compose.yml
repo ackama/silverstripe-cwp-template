@@ -47,9 +47,8 @@ services:
       - ./phpunit.xml:/var/www/phpunit.xml:cached
 
       ##
-      # Mount Application and Theme files
+      # Mount Application files
       - ./app:/var/www/app:cached
-      - ./themes/silverstrip-template-theme:/var/www/themes/silverstrip-template-theme:cached
       
       ##
       # Shared volume to handle solr configuration files
