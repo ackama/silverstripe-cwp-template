@@ -135,6 +135,11 @@ RUN echo 'alias ls="ls $LS_OPTIONS"' >> /var/www/.bashrc
 COPY ["./composer.json", "/var/www/composer.json"]
 COPY ["./composer.lock", "/var/www/composer.lock"]
 
+# Copy the npm files in so they are available for the 'npm ci'
+# command later in this file
+COPY ["./package.json", "/var/www/package.json"]
+COPY ["./package-lock.json", "/var/www/package-lock.json"]
+
 # Copy public webroot. If this directory doesn't exist, the webroot will be
 # assumed to be the current working directory when installing
 COPY public /var/www/public
@@ -150,11 +155,11 @@ RUN npm ci
 # Finally make the www-user own all files in /var/www
 RUN chown -R www-data:www-data /var/www
 
-# Remove the composer files from the image because we will mount our own copies
-# when we start the container. Removing the files should help avoid confusing
+# Remove the composer and npm files from the image because we will mount our own
+# copies when we start the container. Removing the files should help avoid confusing
 # situations where the old files are still around because we made an error with
 # the volume mount.
-RUN rm composer.json composer.lock
+RUN rm composer.json composer.lock package.json package-lock.json
 
 ENTRYPOINT ["docker-php-entrypoint"]
 
