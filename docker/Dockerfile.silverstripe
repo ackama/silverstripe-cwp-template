@@ -145,7 +145,7 @@ COPY app /var/www/app
 # Install application
 RUN composer install --no-scripts
 RUN composer vendor-expose
-RUN npm install --dev
+RUN npm ci
 
 # Finally make the www-user own all files in /var/www
 RUN chown -R www-data:www-data /var/www

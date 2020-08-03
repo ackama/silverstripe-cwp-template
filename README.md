@@ -114,7 +114,7 @@ Once the project is cloned, execute this command:
    * Firefox: you will be given the option to accept the risk of opening your localhost URL
 * Use `bin/console` to log in into your local dev environment
 * If you want to have access to your dependencies in the host, run `composer install --no-scripts`,
-  `composer vendor-expose` and `npm install --dev`. These directories are not shared to avoid lowering
+  `composer vendor-expose` and `npm ci`. These directories are not shared to avoid lowering
   performance.
 * Run `npm run watch` in a separate view to build your assets in realtime. 
 * Whenever you make changes in your silverstripe app or theme, run `sake dev/build flush=1`
@@ -129,7 +129,7 @@ commands will be ready to build:
 ```
 composer install --no-scripts
 composer vendor-expose
-npm install --dev
+npm ci
 sake dev/build flush=1
 npm run watch
 ```
