@@ -3,7 +3,7 @@ Name: silverstripe-template-project/searchindexes
 ---
 SilverStripe\FullTextSearch\Search\FullTextSearch:
   indexes:
-    - SilverstripeCWPtemplate\SolrSearchIndex
+    - SilverstripeTemplateProject\SearchIndex
 
 ---
 Name: silverstripe-template-project/searchconfig
@@ -11,8 +11,6 @@ After: cwpsearch
 ---
 SilverStripe\Core\Injector\Injector:
   CWP\Search\CwpSearchEngine.search_index:
-    class: SilverstripeCWPtemplate\SolrSearchIndex
-  SilverStripe\FullTextSearch\Solr\Control\ContentControllerExtension:
-    class: SilverstripeCWPtemplate\SearchPageController
+    class: SilverstripeTemplateProject\SearchIndex
   SilverStripe\CMS\Search\SearchForm:
-    class: SilverstripeCWPtemplate\SearchForm
+    class: SilverstripeTemplateProject\SearchForm

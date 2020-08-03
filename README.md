@@ -25,7 +25,7 @@ Also refer to our [Ackama README Template](https://github.com/ackama/wiki/wiki/A
 Clone this repository, remove its `.git` directory and initialise it as a new repository:
 
 ```
-$ git clone git@bitbucket.org:rabidtech/silverstripe-cwp-template.git your-project
+$ git clone git@github.com:ackama/silverstripe-cwp-template.git your-project
 $ cd your-project
 $ rm -rf .git
 $ git init 
