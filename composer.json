@@ -51,6 +51,12 @@
             "app/_config/mysite.yml"
         ]
     },
+    "scripts": {
+        "post-create-project-cmd": [
+            "composer update",
+            "npm install"
+        ]
+    },
     "config": {
         "process-timeout": 600,
         "sort-packages": true
