@@ -1,7 +1,7 @@
 {
-    "name": "ackama/silverstripe-template-project",
+    "name": "ackama/silverstripe-cwp-template",
     "type": "silverstripe-recipe",
-    "description": "Ackama Silverstripe/CWP Template",
+    "description": "Ackama Silverstripe CWP Template",
     "homepage": "https://ackama.com",
     "license": "BSD-3-Clause",
     "require": {
