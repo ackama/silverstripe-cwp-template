@@ -10,12 +10,11 @@ use SilverStripe\i18n\i18n;
 use SilverStripe\Comments\Admin\CommentAdmin;
 
 // remove PasswordValidator for SilverStripe 5.0
-$validator = new PasswordValidator();
-
-$validator->minLength(8);
-$validator->checkHistoricalPasswords(6);
+$validator = PasswordValidator::create();
+// Settings are registered via Injector configuration - see passwords.yml in framework
 Member::set_password_validator($validator);
 
+// Sets Locale to English New Zealand
 i18n::set_locale('en_NZ');
 
 /**

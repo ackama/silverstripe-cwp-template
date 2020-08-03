@@ -98,7 +98,6 @@ The keys are stored encrypted in BitBucket pipelines.
 
 * docker
 * docker-compose
-* docker-sync [Optional]
 
 ### Running the app
 
@@ -107,35 +106,6 @@ Clone the project: `git clone git@bitbucket.org:rabidtech/rabidtech/silverstripe
 Once the project is cloned, execute this command:
 
 * `docker-compose up` will setup your runtime environment.
-  
-Optionally you can use `docker-sync` to synchronise files between your host
-and the container. There's a significant runtime speed advantage when using
-docker-sync. 
-
-#### Using `docker-sync`
-
-##### Install
-
-For macOS:
-`gem install docker-sync` 
-If the `docker-sync` command fails with 'Fatal error: No file monitoring helper program found' then execute the following command:
-`brew unlink unox && brew link unox`
-https://github.com/hnsl/unox/issues/24
-
-For Windows: follow the instructions here - 
-https://docker-sync.readthedocs.io/en/latest/getting-started/installation.html#windows
-
-##### Running Docker-sync
-
-In order to run the project on docker-sync, run these command on separate terminals. Both
-are services that must keep on running:
-
-* `docker-sync start -f` which will setup your local files shares
-  and screen the output log. Wait for this to finish creating the volumes
-  before fireing up docker-compose. Also, the first sync may take a while.
-  
-* `docker-compose -f docker-compose.yml -f docker-compose-sync.yml up` will setup your
-runtime environment with the shared volume created by docker-sync.
 
 ### Using your development environment
 
@@ -192,7 +162,7 @@ one more config file:
 ```bash
 docker volume create npm-cache
 docker volume create composer-cache
-docker-compose -f docker-compose.yml -f docker-compose-sync.yml -f docker-compose-extcache.yml up
+docker-compose -f docker-compose.yml -f docker-compose-extcache.yml up
 ```
 
 This will ensure that even if you reset your environment, the dependencies cache

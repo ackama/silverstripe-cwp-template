@@ -1,8 +1,0 @@
-version: "3.5"
-services:
-  app:
-    volumes:
-      - silverstripe-template-project-app-data-sync:/var/www:nocopy
-volumes:
-  silverstripe-template-project-app-data-sync:
-    external: true

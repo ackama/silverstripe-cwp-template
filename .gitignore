@@ -27,6 +27,7 @@ _ss_environment.php
 /advancedworkflow
 /akismet
 /apache
+/app/.htaccess
 /assets/
 /assets/_combinedfiles
 /assets/feature-images
@@ -64,10 +65,7 @@ _ss_environment.php
 /multivaluefield
 /neolayout
 /nginx
-/public/assets/
-/public/resources/vendor/
-/public/resources/themes/
-/public/resources/
+/public
 /queuedjobs
 /redirectedurls
 /registry
