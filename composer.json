@@ -4,6 +4,9 @@
     "description": "Ackama Silverstripe CWP Template",
     "homepage": "https://ackama.com",
     "license": "BSD-3-Clause",
+    "support": {
+        "docs": "https://www.cwp.govt.nz/developer-docs/en/2/"
+    },
     "require": {
         "php": ">=7.2.0",
         "silverstripe/totp-authenticator": "^4.0",
