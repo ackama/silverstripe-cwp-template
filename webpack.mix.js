@@ -14,10 +14,6 @@ mix.copyDirectory('app/themes/silverstripe-template-theme/src/ico', 'app/themes/
 mix.copyDirectory('app/themes/silverstripe-template-theme/src/img', 'app/themes/silverstripe-template-theme/dist/img/');
 mix.copyDirectory('app/themes/silverstripe-template-theme/src/fonts', 'app/themes/silverstripe-template-theme/dist/fonts/');
 
-mix
-  .sass('modules/documents-library/scss/documents-library.scss', 'modules/documents-library/dist/css/')
-  .js('modules/documents-library/js/documents-library.js', 'modules/documents-library/dist/js/');
-
 mix.webpackConfig({
   externals: {
     jquery: 'jQuery',
