@@ -3,4 +3,4 @@
 droot=$(git rev-parse --show-toplevel) || exit
 dexec="$droot/bin/exec"
 
-"$dexec" "bash"
+"$dexec" "sspak $*"
