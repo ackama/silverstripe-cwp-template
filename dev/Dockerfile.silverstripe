@@ -15,19 +15,14 @@ RUN apt-get -y update; \
         apt-utils\
         ssl-cert \
         mariadb-client \
-        zlib1g-dev \
         libicu-dev \
-        libpng-dev \
         libjpeg-dev \
-        libfreetype6-dev \
-        libjpeg62-turbo-dev \
         libwebp-dev \
         locales \
         gcc \
         g++ \
         gnupg \
         build-essential \
-        zip \
         unzip \
         curl \
         git \
@@ -62,16 +57,56 @@ RUN \
     mkdir /var/www/.npm && chown -R www-data:www-data /var/www/.npm; \
     mkdir -p /var/www/.composer/cache && chown -R www-data:www-data /var/www/.composer
 
-# Installs PHP Extensions
-RUN docker-php-ext-configure intl; \
+
+# # Install PHP extension: gd (PHP 7.4 version)
+# #  * PHP changed how gd is configured in 7.4 so you need to use this invocation
+# #    instead when you upgrade to 7.4
+# RUN apt-get install -y \
+#     libfreetype6-dev \
+#     libjpeg62-turbo-dev \
+#     libpng-dev \
+#     && docker-php-ext-configure gd --with-freetype --with-jpeg \
+#     && docker-php-ext-install -j$(nproc) gd
+
+# Install PHP extension: gd (PHP 7.3 version)
+RUN apt-get install -y \
+        libfreetype6-dev \
+        libjpeg62-turbo-dev \
+        libpng-dev; \
     docker-php-ext-configure gd --with-png-dir=/usr/lib --with-jpeg-dir=/usr/lib --with-webp-dir=/usr/lib --with-freetype-dir=/usr/lib; \
+    docker-php-ext-install -j$(nproc) gd
+
+# Install internationalisation
+RUN docker-php-ext-configure intl extension; \
     docker-php-ext-install -j$(nproc) intl \
+
+# Install ZIP support for php
+RUN apt-get install -y \
+        zlib1g-dev \
+        zip \
+        libzip-dev \
+    && docker-php-ext-configure zip --with-libzip \
+    && docker-php-ext-install zip
+
+# Installs various PHP Extensions
+RUN docker-php-ext-install -j$(nproc) \
         pdo_mysql \
         mysqli \
-        gd \
-        bcmath; \
-    pecl install xdebug; \
+        bcmath
+
+# Install xdebug support
+RUN pecl install xdebug; \
     docker-php-ext-enable xdebug;
+
+# # Install PHP extension: redis
+# RUN pecl install redis-5.1.1 \
+#     && pecl install xdebug-2.8.1 \
+#     && docker-php-ext-enable redis xdebug
+
+# # Install PHP extension: memcached
+# RUN apt-get install -y libmemcached-dev zlib1g-dev \
+#     && pecl install memcached-2.2.0 \
+#     && docker-php-ext-enable memcached
 
 # Update npm and yarn
 RUN npm install -g npm yarn
