@@ -1,10 +1,18 @@
-version: "3.5"
+##
+# https://docs.docker.com/compose/compose-file/
+#
+version: "3.7"
+
 services:
+
+  ###
+  # This container runs our SilverStripe application
   app:
     build:
       context: ./
       dockerfile: dev/Dockerfile.silverstripe
     ports:
+      # host:container
       - "80:80"
       - "443:443"
     depends_on:
@@ -15,6 +23,8 @@ services:
     environment:
       APP_NAME: "SilverstripeTemplateProject"
       APP_ENV: dev
+
+      # Silverstripe config
       SS_BASE_URL: https://localhost
       SS_DATABASE_CLASS: MySQLDatabase
       SS_DATABASE_SERVER: database
@@ -30,8 +40,12 @@ services:
       SS_USE_BASIC_AUTH: 0
       SS_DOCKER: 1
       SS_SOLR_ENABLED: 1
+
+      # PHP Config
       MAX_EXECUTION_TIME: 90
       MEMORY_LIMIT: 256M
+
+      # XDebug Config
       XDEBUG_PROFILER_ENABLE: 0
       XDEBUG_REMOTE_AUTOSTART: 0
       XDEBUG_REMOTE_ENABLE: 0
