@@ -17,19 +17,3 @@ SilverStripe\Control\Email\Email:
   admin_email:
     no-reply@silverstripe-template-project-uat.cwp.govt.nz: "SilverstripeTemplateProject UAT"
 ---
-
----
-Name: silverstripe-template-project/mail-docker
-After:
-  - '#emailconfig'
----
-Only:
-  environment: 'dev'
-  envvarset: 'SS_DOCKER'
----
-SilverStripe\Core\Injector\Injector:
-  Swift_Transport:
-    class: Swift_SmtpTransport
-    properties:
-      Host: smtp
-      Port: 25
