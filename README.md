@@ -63,7 +63,7 @@ This project follows the following branch convention:
 
 | **Environment** | **URL**                                | **Hosting Platform** | **Git Branch**      | 
 |-----------------|----------------------------------------|----------------------|---------------------|
-| Test            | _TODO_                                 | Heroku               | deployment (tagged) |
+| Staging         | _TODO_                                 | Heroku               | deployment (tagged) |
 | UAT             | _TODO_                                 | CWP                  | deployment (tagged) |
 | Production      | _TODO_                                 | CWP                  | deployment (tagged) |
 
