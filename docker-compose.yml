@@ -3,7 +3,7 @@ services:
   app:
     build:
       context: ./
-      dockerfile: docker/Dockerfile.silverstripe
+      dockerfile: dev/Dockerfile.silverstripe
     ports:
       - "80:80"
       - "443:443"
