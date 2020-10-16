@@ -38,6 +38,7 @@ services:
       SS_DEFAULT_ADMIN_PASSWORD: admin
       SS_VENDOR_METHOD: symlink
       SS_USE_BASIC_AUTH: 0
+      SS_MFA_SECRET_KEY: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
       SS_DOCKER: 1
       SS_SOLR_ENABLED: 1
 
