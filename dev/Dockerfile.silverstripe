@@ -117,11 +117,11 @@ RUN apt-get clean; \
     rm -r /var/lib/apt/lists/*
 
 # PHP Configuration
-COPY ["./dev/conf/php/php.ini", "/usr/local/etc/php/php.ini"]
-COPY ["./dev/conf/php/docker-php-ext*", "/usr/local/etc/php/conf.d/"]
+COPY ["./dev/conf/app/usr/local/etc/php/php.ini", "/usr/local/etc/php/php.ini"]
+COPY ["./dev/conf/app/usr/local/etc/php/conf.d/*", "/usr/local/etc/php/conf.d/"]
 
 # Apache Configuration
-COPY ["./dev/conf/apache2/docker.conf", "/etc/apache2/sites-enabled/000-default.conf"]
+COPY ["./dev/conf/app/etc/apache2/sites-enabled/000-default.conf", "/etc/apache2/sites-enabled/000-default.conf"]
 RUN \
     # Generates default SSL certificates
     make-ssl-cert generate-default-snakeoil; \
