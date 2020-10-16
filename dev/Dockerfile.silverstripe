@@ -84,9 +84,9 @@ RUN docker-php-ext-configure intl extension; \
 RUN apt-get install -y \
         zlib1g-dev \
         zip \
-        libzip-dev \
-    && docker-php-ext-configure zip --with-libzip \
-    && docker-php-ext-install zip
+        libzip-dev; \
+    docker-php-ext-configure zip --with-libzip; \
+    docker-php-ext-install -j$(nproc) zip
 
 # Installs various PHP Extensions
 RUN docker-php-ext-install -j$(nproc) \
