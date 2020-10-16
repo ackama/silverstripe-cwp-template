@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ebb764f698efab794692e0871347a645",
+    "content-hash": "d0f71ba3c569453606f84ee079c8ec1c",
     "packages": [
         {
             "name": "asyncphp/doorman",
@@ -837,16 +837,16 @@
         },
         {
             "name": "cwp/cwp-recipe-search",
-            "version": "2.6.0",
+            "version": "2.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silverstripe/cwp-recipe-search.git",
-                "reference": "0721d13651413bac92ff587548e2bbc75985cb40"
+                "reference": "a13f1ff1d4b29d862db1f92b082342c03e510bfc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silverstripe/cwp-recipe-search/zipball/0721d13651413bac92ff587548e2bbc75985cb40",
-                "reference": "0721d13651413bac92ff587548e2bbc75985cb40",
+                "url": "https://api.github.com/repos/silverstripe/cwp-recipe-search/zipball/a13f1ff1d4b29d862db1f92b082342c03e510bfc",
+                "reference": "a13f1ff1d4b29d862db1f92b082342c03e510bfc",
                 "shasum": ""
             },
             "require": {
@@ -871,7 +871,7 @@
             ],
             "description": "CWP search requirements recipe",
             "homepage": "https://www.cwp.govt.nz",
-            "time": "2020-07-13T05:43:06+00:00"
+            "time": "2020-09-03T01:41:20+00:00"
         },
         {
             "name": "cwp/cwp-search",
@@ -1058,16 +1058,16 @@
         },
         {
             "name": "dnadesign/silverstripe-elemental",
-            "version": "4.4.0",
+            "version": "4.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dnadesign/silverstripe-elemental.git",
-                "reference": "38fd1d6d20e3e64fae849f0a1fedd4cfd9468a58"
+                "reference": "8f59904bea12c28448c68c53146b3476361a606d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/dnadesign/silverstripe-elemental/zipball/38fd1d6d20e3e64fae849f0a1fedd4cfd9468a58",
-                "reference": "38fd1d6d20e3e64fae849f0a1fedd4cfd9468a58",
+                "url": "https://api.github.com/repos/dnadesign/silverstripe-elemental/zipball/8f59904bea12c28448c68c53146b3476361a606d",
+                "reference": "8f59904bea12c28448c68c53146b3476361a606d",
                 "shasum": ""
             },
             "require": {
@@ -1092,7 +1092,7 @@
             "type": "silverstripe-vendormodule",
             "extra": {
                 "branch-alias": {
-                    "4.x-dev": "4.2.x-dev"
+                    "4.x-dev": "4.4.x-dev"
                 },
                 "expose": [
                     "client/dist",
@@ -1122,7 +1122,7 @@
                 "elemental",
                 "silverstripe"
             ],
-            "time": "2020-06-02T17:50:54+00:00"
+            "time": "2020-08-28T02:18:24+00:00"
         },
         {
             "name": "dnadesign/silverstripe-elemental-list",
@@ -9846,6 +9846,7 @@
             "keywords": [
                 "tokenizer"
             ],
+            "abandoned": true,
             "time": "2017-11-27T05:48:46+00:00"
         },
         {
@@ -10325,7 +10326,7 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.2.0"
+        "php": ">=7.3.0"
     },
     "platform-dev": [],
     "plugin-api-version": "1.1.0"
