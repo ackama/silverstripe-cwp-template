@@ -1,26 +1,17 @@
 #!/usr/bin/env bash
 
-droot=$(git rev-parse --show-toplevel) || exit
-dexec="$droot/bin/exec"
-
 set -e
 
-"$dexec" composer install --no-scripts
+sh ./bin/composer install --no-scripts
 
-"$dexec" npm install --prefix ./themes/starter
-"$dexec" npm run build --prefix ./themes/starter
+sh ./bin/npm install
 
-"$dexec" npm install --prefix ./themes/watea/
-"$dexec" npm run package --prefix ./themes/watea/
-
-"$dexec" npm install
-
-"$dexec" composer vendor-expose
+sh ./bin/composer vendor-expose
 
 sspak_file="$1"
 if [ "$sspak_file" ]; then
   echo "loading $sspak_file..."
-  "$droot/bin/sspak" load "$sspak_file" --drop-db
+  sh ./bin/sspak load "$sspak_file" --drop-db
 fi
 
-"$droot/bin/sake" dev/build 'flush=1'
+sh ./bin/sake dev/build 'flush=1'

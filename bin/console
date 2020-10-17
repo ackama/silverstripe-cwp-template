@@ -1,6 +1,3 @@
 #!/usr/bin/env bash
 
-droot=$(git rev-parse --show-toplevel) || exit
-dexec="$droot/bin/exec"
-
-"$dexec" "bash"
+docker-compose exec --user www-data app bash
