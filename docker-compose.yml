@@ -73,7 +73,7 @@ services:
   # * https://hub.docker.com/_/mariadb
   # * CWP is using MariaDB and so are we
   database:
-    image: mariadb:10
+    image: mariadb:10.3
     ports:
       - "3306:3306"
     environment:
