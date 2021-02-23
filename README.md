@@ -58,7 +58,7 @@ _Edit as necessary_
 CI pipelines need to be active and configured
 
 This project follows the following branch convention:
-**master** Main development branch
+**main** Main development branch
 **deployment** Deployment branch that gets tagged and tagged releases are deployed
 
 | **Environment** | **URL**                                | **Hosting Platform** | **Git Branch**      | 

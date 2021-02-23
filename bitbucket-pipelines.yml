@@ -47,7 +47,7 @@ definitions:
           - composer
           - npm
           - node
-        # This script pulls master, builds the project and creates a
+        # This script pulls main, builds the project and creates a
         # release version which then it's committed onto the deployment
         # branch of the repository. The said commit gets tagged with the
         # current pipeline build number.
@@ -56,7 +56,7 @@ definitions:
           - git fetch origin
           - git checkout --track origin/deployment
           - git pull
-          - git merge --no-commit --quiet master
+          - git merge --no-commit --quiet main
           - composer install --no-scripts --no-interaction --no-progress --no-suggest
           - composer vendor-expose
           - npm ci
@@ -73,7 +73,7 @@ definitions:
         script:
           - git checkout ${BITBUCKET_TAG}
           - git pull
-          - git push -f https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_ID.git HEAD:master
+          - git push -f https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_ID.git HEAD:main
     - step: &deploy-uat
         name: Deploys to UAT
         deployment: uat
@@ -147,7 +147,7 @@ pipelines:
       - step: *run-tests-step
 
   branches:
-    master:
+    main:
      - step: *build-deps-caches
      - step: *run-tests-step
      - step: *build-release
