@@ -2,11 +2,11 @@
 
 set -e
 
-sh ./bin/composer install --no-scripts
+bash ./bin/composer install --no-scripts
 
-sh ./bin/npm install
+bash ./bin/npm install
 
-sh ./bin/composer vendor-expose
+bash ./bin/composer vendor-expose
 
 sspak_file="$1"
 if [ "$sspak_file" ]; then
@@ -14,4 +14,4 @@ if [ "$sspak_file" ]; then
   sh ./bin/sspak load "$sspak_file" --drop-db
 fi
 
-sh ./bin/sake dev/build 'flush=1'
+bash ./bin/sake dev/build 'flush=1'
