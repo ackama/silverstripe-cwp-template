@@ -32,7 +32,6 @@
     "eslint-plugin-react": "^7.14.3",
     "foundation-sites": "^6.5.3",
     "laravel-mix": "^5.0.7",
-    "prettier": "^2.1.2",
     "resolve-url-loader": "^3.1.0",
     "sass": "^1.22.12",
     "sass-lint": "^1.10.2",
