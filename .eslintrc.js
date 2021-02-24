@@ -8,14 +8,7 @@ const config = {
     commonjs: true,
     node: true
   },
-  extends: ['ackama'],
-  ignorePatterns: [
-    'node_modules/',
-    'vendor/',
-    'themes/watea/',
-    'themes/starter/',
-    'app/themes/silverstripe-template-theme/dist/'
-  ]
+  extends: ['ackama']
 };
 
 module.exports = config;
