@@ -1,4 +1,4 @@
-image: php:7.4-apache
+image: prefernz/php-node:7.3
 
 definitions:
   services:
