@@ -2,7 +2,7 @@
 FROM php:7.4-apache
 
 # Extra Repositories
-RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
+RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
 
 ENV LC_ALL C.UTF-8
 ENV LANG en_US.UTF-8
@@ -108,7 +108,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install --yes --no-install-recommends
 COPY dev/conf/app/usr/local/etc/php/conf.d/sendmail.ini /usr/local/etc/php/conf.d/sendmail.ini
 
 # Update npm and yarn
-RUN npm install -g npm yarn
+RUN npm install -g npm
+RUN npm install -g yarn
 
 # Remove trash
 RUN apt-get clean; \
