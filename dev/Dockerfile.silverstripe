@@ -1,5 +1,5 @@
 # Extend from current stable php apache
-FROM php:7.3-apache
+FROM php:7.4-apache
 
 # Extra Repositories
 RUN curl -sL https://deb.nodesource.com/setup_10.x | bash -
@@ -58,23 +58,13 @@ RUN \
     mkdir -p /var/www/.composer/cache && chown -R www-data:www-data /var/www/.composer
 
 
-# # Install PHP extension: gd (PHP 7.4 version)
-# #  * PHP changed how gd is configured in 7.4 so you need to use this invocation
-# #    instead when you upgrade to 7.4
-# RUN apt-get install -y \
-#     libfreetype6-dev \
-#     libjpeg62-turbo-dev \
-#     libpng-dev \
-#     && docker-php-ext-configure gd --with-freetype --with-jpeg \
-#     && docker-php-ext-install -j$(nproc) gd
-
-# Install PHP extension: gd (PHP 7.3 version)
-RUN apt-get install -y \
-        libfreetype6-dev \
-        libjpeg62-turbo-dev \
-        libpng-dev; \
-    docker-php-ext-configure gd --with-png-dir=/usr/lib --with-jpeg-dir=/usr/lib --with-webp-dir=/usr/lib --with-freetype-dir=/usr/lib; \
-    docker-php-ext-install -j$(nproc) gd
+ # Install PHP extension: gd (PHP 7.4 version)
+ RUN apt-get install -y \
+     libfreetype6-dev \
+     libjpeg62-turbo-dev \
+     libpng-dev \
+     && docker-php-ext-configure gd --with-freetype --with-jpeg \
+     && docker-php-ext-install -j$(nproc) gd
 
 # Install internationalisation
 RUN docker-php-ext-configure intl extension; \
