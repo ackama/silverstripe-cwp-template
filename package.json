@@ -7,9 +7,9 @@
     "test": "tests"
   },
   "scripts": {
-    "watch": "webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js --watch",
-    "build": "webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-    "package": "NODE_ENV=production webpack --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
+    "watch": "mix --watch",
+    "build": "mix",
+    "package": "mix --production",
     "lint-js": "node_modules/.bin/eslint src/js",
     "lint-sass": "node_modules/.bin/sass-lint -v",
     "svgsprite": "svg-sprite --config config/svgsprite.json ./src/svg-icons/*.svg",
