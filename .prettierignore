@@ -15,3 +15,6 @@ package.json
 # Bitbucket Pipeline
 bitbucket-pipelines.yml
 docker-compose.yml
+
+# Ignore YML files
+*.yml
