@@ -150,22 +150,6 @@ npm ci
 npm run package
 ```
 
-#### Dependencies cache [Optional]
-
-Currently `npm` and `composer` caches are held per project. It's possible to use a shared
-cache across all docker requests. In order to do so, you will need to create both
-volume shares (only once across your system) and always execute `docker-compose` with
-one more config file:
-
-```bash
-docker volume create npm-cache
-docker volume create composer-cache
-docker-compose -f docker-compose.yml -f docker-compose-extcache.yml up
-```
-
-This will ensure that even if you reset your environment, the dependencies cache
-are kept and rebuilds are sped up. 
-
 #### Testing in your environment
 
 Because of the nature of CWP, local usage of composer should be done in
