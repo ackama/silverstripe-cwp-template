@@ -183,8 +183,10 @@ COPY public /var/www/public
 COPY app /var/www/app
 
 # Install application
-RUN composer install --no-scripts
-RUN composer vendor-expose
+# We use MEMORY_LIMIT=-1 because php.ini uses this ENV value,
+# It is set in docker-compose but not available on build
+RUN MEMORY_LIMIT=-1 composer install --no-scripts
+RUN MEMORY_LIMIT=-1 composer vendor-expose
 RUN npm ci
 
 # Finally make the www-user own all files in /var/www

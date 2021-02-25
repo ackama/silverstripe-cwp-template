@@ -46,6 +46,9 @@ services:
       MAX_EXECUTION_TIME: 90
       MEMORY_LIMIT: 256M
 
+      # Composer Config
+      COMPOSER_MEMORY_LIMIT: -1
+
       # XDebug Config
       XDEBUG_PROFILER_ENABLE: 0
       XDEBUG_REMOTE_AUTOSTART: 0
