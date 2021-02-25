@@ -60,6 +60,7 @@ services:
       - ./composer.lock:/var/www/composer.lock:cached
       
       - ./package.json:/var/www/package.json:cached
+      - ./package-lock.json:/var/www/package-lock.json:cached
       - ./webpack.mix.js:/var/www/webpack.mix.js:cached
 
       - ./phpunit.xml:/var/www/phpunit.xml:cached
