@@ -4,7 +4,7 @@ set -e
 
 bash ./bin/composer install --no-scripts
 
-bash ./bin/npm install
+bash ./bin/npm ci
 
 bash ./bin/composer vendor-expose
 
