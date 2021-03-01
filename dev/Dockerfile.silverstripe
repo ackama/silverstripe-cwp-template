@@ -54,7 +54,9 @@ RUN \
     rm -rvf /var/www/*; \
     # Gives ownership of /var/solr to www-data to allow index creation
     mkdir /var/solr && chown -R www-data:www-data /var/solr; \
+    # Gives ownership of npm tmp dir to www-data
     mkdir /var/www/.npm && chown -R www-data:www-data /var/www/.npm; \
+    # Gives ownership of composer tmp dir to www-data to allow index creation
     mkdir -p /var/www/.composer/cache && chown -R www-data:www-data /var/www/.composer
 
 
