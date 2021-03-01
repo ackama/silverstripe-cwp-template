@@ -149,21 +149,27 @@ RUN \
 # Drupal root dir.
 WORKDIR /var/www
 
-# Add the directory that composer will put tools such as phpunit, drupal
-# console in to PATH so they are avaiable wihtout having to type the
-# 'vendor/bin/' prefix
-ENV PATH=$PATH:/var/www/vendor/bin
-
 RUN echo 'export LS_OPTIONS="--color=auto"' >> /root/.bashrc
 RUN echo 'alias ls="ls $LS_OPTIONS"' >> /root/.bashrc
 
 # Give the www-data user a shell so that we can 'su' and 'sudo' to that user
 RUN chsh -s /bin/bash www-data
 
-RUN echo 'export LS_OPTIONS="--color=auto"' >> /var/www/.bashrc
-RUN echo 'alias ls="ls $LS_OPTIONS"' >> /var/www/.bashrc
+# Add the directory that composer will put tools such as phpunit, drupal
+# console in to PATH so they are avaiable wihtout having to type the
+# 'vendor/bin/' prefix
+ENV PATH=$PATH:/var/www/vendor/bin
 
-## Install SilverStripe
+## Make the www-user own all files in /var/www
+RUN chown -R www-data:www-data /var/www
+
+# Switch to the www-data (uid:1000:gid:1000) user
+USER 1000:1000
+
+RUN echo 'export LS_OPTIONS="--color=auto"' >> /var/www/.bashrc; \
+    echo 'alias ls="ls $LS_OPTIONS"' >> /var/www/.bashrc
+
+## Install SilverStripe Dependencies
 
 # Copy the composer files in so they are available for the 'composer install'
 # command later in this file
@@ -189,14 +195,14 @@ RUN MEMORY_LIMIT=-1 composer install --no-scripts
 RUN MEMORY_LIMIT=-1 composer vendor-expose
 RUN npm ci
 
-# Finally make the www-user own all files in /var/www
-RUN chown -R www-data:www-data /var/www
-
-# Remove the composer and npm files from the image because we will mount our own
-# copies when we start the container. Removing the files should help avoid confusing
-# situations where the old files are still around because we made an error with
-# the volume mount.
+## Remove the composer and npm files from the image because we will mount our own
+## copies when we start the container. Removing the files should help avoid confusing
+## situations where the old files are still around because we made an error with
+## the volume mount.
 RUN rm composer.json composer.lock package.json package-lock.json
+
+# Go back to the user
+USER root:root
 
 ENTRYPOINT ["docker-php-entrypoint"]
 
