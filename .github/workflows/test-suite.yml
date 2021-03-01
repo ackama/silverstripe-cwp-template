@@ -37,7 +37,7 @@ jobs:
         # container and looks for that magic string. It will loop (sleeping 1
         # second on each loop) while it waits to see the magic string twice.
         working-directory: ./dev
-        run: "while [ $(docker-compose logs mysql |grep 'mysqld: ready for connections' | wc -l | tr -d ' ') -ne '2' ]; do echo 'sleeping...' && sleep 1; done"
+        run: "while [ $(docker-compose logs database |grep 'ready for connections' | wc -l | tr -d ' ') -ne '2' ]; do echo 'sleeping...' && sleep 1; done"
 
       - name: Dump info about running containers (for future debugging)
         run: docker ps -a
