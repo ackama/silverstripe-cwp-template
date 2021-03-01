@@ -28,8 +28,11 @@ jobs:
           docker --version
           docker-compose --version
 
-      - name: Build and start all containers
-        run: docker-compose up -d --build
+      - name: Build Containers
+        run: docker-compose build --pull
+
+      - name: Run Containers
+        run: docker-compose up -d
 
       - name: Wait for MariaDB container to start
         # MariaDB isn't fully ready until it has said "ready for connections"
