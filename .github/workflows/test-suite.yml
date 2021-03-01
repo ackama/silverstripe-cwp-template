@@ -1,0 +1,49 @@
+name: Test Suite
+
+on:
+  pull_request:
+  push:
+    branches:
+      - 'php-7.4-updates'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out this repo
+        uses: actions/checkout@v2
+
+      # In this step, this action saves a list of existing images,
+      # the cache is created without them in the post run.
+      # It also restores the cache if it exists.
+      - uses: satackey/action-docker-layer-caching@v0.0.11
+        # Ignore the failure of a step and avoid terminating the job.
+        continue-on-error: true
+
+      - name: Show docker command versions (for later debugging)
+        run: |
+          docker --version
+          docker-compose --version
+
+      - name: Build and start all containers
+        run: docker-compose up -d --build
+
+      - name: Wait for MariaDB container to start
+        # MariaDB isn't fully ready until it has said "ready for connections"
+        # **twice**. This while loop gathers the log output from the MariaDB
+        # container and looks for that magic string. It will loop (sleeping 1
+        # second on each loop) while it waits to see the magic string twice.
+        working-directory: ./dev
+        run: "while [ $(docker-compose logs mysql |grep 'mysqld: ready for connections' | wc -l | tr -d ' ') -ne '2' ]; do echo 'sleeping...' && sleep 1; done"
+
+      - name: Dump info about running containers (for future debugging)
+        run: docker ps -a
+
+      - name: Install Silverstripe
+        run: ./bin/setup
+
+#      - name: Run tests
+#        working-directory: ./dev
+#        # Show symfony deprecation warnings but don't fail on them. Many
+#        # warnings come from plugins we depend on and don't control.
+#        run: docker-compose exec -T --env SYMFONY_DEPRECATIONS_HELPER=disabled drupal /root/run-ci.sh
