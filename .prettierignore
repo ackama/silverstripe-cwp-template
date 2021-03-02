@@ -5,10 +5,3 @@ public/resources/
 node_modules/
 themes/
 vendor/
-
-# Bitbucket Pipeline
-bitbucket-pipelines.yml
-docker-compose.yml
-
-# Ignore YML files
-*.yml
