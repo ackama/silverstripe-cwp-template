@@ -29,6 +29,8 @@
     "laravel-mix": "^6.0.13",
     "prettier": "^2.2.1",
     "prettier-config-ackama": "^0.1.2",
+    "prettier-plugin-packagejson": "^2.2.10",
+    "prettier-plugin-sh": "^0.6.0",
     "sass": "^1.32.8",
     "sass-loader": "^10.1.1"
   }
