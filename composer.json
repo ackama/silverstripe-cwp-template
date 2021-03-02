@@ -1,70 +1,70 @@
 {
-    "name": "ackama/silverstripe-cwp-template",
-    "type": "silverstripe-recipe",
-    "description": "Ackama Silverstripe CWP Template",
-    "homepage": "https://ackama.com",
-    "license": "BSD-3-Clause",
-    "support": {
-        "docs": "https://www.cwp.govt.nz/developer-docs/en/2/"
+  "name": "ackama/silverstripe-cwp-template",
+  "type": "silverstripe-recipe",
+  "description": "Ackama Silverstripe CWP Template",
+  "homepage": "https://ackama.com",
+  "license": "BSD-3-Clause",
+  "support": {
+    "docs": "https://www.cwp.govt.nz/developer-docs/en/2/"
+  },
+  "require": {
+    "php": ">=7.3.0",
+    "cwp/agency-extensions": "^2.4",
+    "cwp/cwp-pdfexport": "^1.1",
+    "cwp/cwp-recipe-cms": "^2.6",
+    "cwp/cwp-recipe-core": "^2.6",
+    "cwp/cwp-recipe-search": "^2.6",
+    "cwp/watea-theme": "^3.0",
+    "dnadesign/silverstripe-elemental": "^4.4",
+    "dnadesign/silverstripe-elemental-userforms": "^3.0",
+    "dynamic/silverstripe-elemental-blocks": "^3.0",
+    "phptek/sentry": "^3.0",
+    "silverstripe/html5": "^2.0",
+    "silverstripe/recipe-blog": "^1.6",
+    "silverstripe/recipe-core": "^4.6",
+    "silverstripe/recipe-plugin": "^1.3",
+    "silverstripe/totp-authenticator": "^4.0"
+  },
+  "require-dev": {
+    "squizlabs/php_codesniffer": "^3",
+    "phpunit/phpunit": "^5.7"
+  },
+  "autoload": {
+    "psr-4": {
+      "SilverstripeTemplateProject\\": [
+        "app/src/"
+      ],
+      "SilverstripeTemplateProject\\Tests\\": [
+        "app/tests/"
+      ]
     },
-    "require": {
-        "php": ">=7.3.0",
-        "cwp/agency-extensions": "^2.4",
-        "cwp/cwp-pdfexport": "^1.1",
-        "cwp/cwp-recipe-cms": "^2.6",
-        "cwp/cwp-recipe-core": "^2.6",
-        "cwp/cwp-recipe-search": "^2.6",
-        "cwp/watea-theme": "^3.0",
-        "dnadesign/silverstripe-elemental": "^4.4",
-        "dnadesign/silverstripe-elemental-userforms": "^3.0",
-        "dynamic/silverstripe-elemental-blocks": "^3.0",
-        "phptek/sentry": "^3.0",
-        "silverstripe/html5": "^2.0",
-        "silverstripe/recipe-blog": "^1.6",
-        "silverstripe/recipe-core": "^4.6",
-        "silverstripe/recipe-plugin": "^1.3",
-        "silverstripe/totp-authenticator": "^4.0"
-    },
-    "require-dev": {
-        "squizlabs/php_codesniffer": "^3",
-        "phpunit/phpunit": "^5.7"
-    },
-    "autoload": {
-        "psr-4": {
-            "SilverstripeTemplateProject\\": [
-                "app/src/"
-            ],
-            "SilverstripeTemplateProject\\Tests\\": [
-                "app/tests/"
-            ]
-        },
-        "classmap": [
-            "app/helper/"
-        ]
-    },
-    "extra": {
-        "expose": [
-            "themes/silverstripe-template-theme/dist/css",
-            "themes/silverstripe-template-theme/dist/fonts",
-            "themes/silverstripe-template-theme/dist/ico",
-            "themes/silverstripe-template-theme/dist/img",
-            "themes/silverstripe-template-theme/dist/js"
-        ],
-        "project-files-installed": [
-            "app/_config.php",
-            "app/_config/mysite.yml"
-        ]
-    },
-    "scripts": {
-        "post-create-project-cmd": [
-            "composer update",
-            "npm install"
-        ]
-    },
-    "config": {
-        "process-timeout": 600,
-        "sort-packages": true
-    },
-    "prefer-stable": true,
-    "minimum-stability": "dev"
+    "classmap": [
+      "app/helper/"
+    ]
+  },
+  "extra": {
+    "expose": [
+      "themes/silverstripe-template-theme/dist/css",
+      "themes/silverstripe-template-theme/dist/fonts",
+      "themes/silverstripe-template-theme/dist/ico",
+      "themes/silverstripe-template-theme/dist/img",
+      "themes/silverstripe-template-theme/dist/js"
+    ],
+    "project-files-installed": [
+      "app/_config.php",
+      "app/_config/mysite.yml"
+    ]
+  },
+  "scripts": {
+    "post-create-project-cmd": [
+      "composer update",
+      "npm install"
+    ]
+  },
+  "config": {
+    "process-timeout": 600,
+    "sort-packages": true
+  },
+  "prefer-stable": true,
+  "minimum-stability": "dev"
 }

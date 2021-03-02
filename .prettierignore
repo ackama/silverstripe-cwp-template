@@ -6,12 +6,6 @@ node_modules/
 themes/
 vendor/
 
-# Files managed by other tools
-composer.json
-composer.lock
-package-lock.json
-package.json
-
 # Bitbucket Pipeline
 bitbucket-pipelines.yml
 docker-compose.yml
