@@ -36,30 +36,6 @@ RUN apt-get -y update; \
         iproute2 \
         nodejs
 
-RUN \
-    # Installs SSPAK for SilverStripe
-    # https://github.com/silverstripe/sspak
-    curl -sS https://silverstripe.github.io/sspak/install | php -- /usr/local/bin; \
-    # Composer binary
-    curl -sS https://getcomposer.org/installer | php -- --filename=composer --install-dir=/usr/local/bin; \
-    # Makes binaries specified by composer accessible to bash
-    echo 'PATH=$PATH:/var/www/vendor/bin' >> /etc/bash.bashrc;
-
-RUN \
-    # Changes user id of www-data to 1000 for permissions and shares
-    # compatibility with other machines
-    usermod -u 1000 www-data; \
-    groupmod -g 1000 www-data; \
-    # Removes files we won't use from /var/www
-    rm -rvf /var/www/*; \
-    # Gives ownership of /var/solr to www-data to allow index creation
-    mkdir /var/solr && chown -R www-data:www-data /var/solr; \
-    # Gives ownership of npm tmp dir to www-data
-    mkdir /var/www/.npm && chown -R www-data:www-data /var/www/.npm; \
-    # Gives ownership of composer tmp dir to www-data to allow index creation
-    mkdir -p /var/www/.composer/cache && chown -R www-data:www-data /var/www/.composer
-
-
  # Install PHP extension: gd (PHP 7.4 version)
  RUN apt-get install -y \
      libfreetype6-dev \
@@ -145,6 +121,37 @@ RUN \
     usermod --append --groups ssl-cert www-data;\
     # Enables apache modules
     a2enmod headers rewrite ssl
+
+####
+# Runtime user/project/directory setup
+####
+
+RUN \
+    # Changes user id of www-data to 1000 for permissions and shares
+    # compatibility with other machines
+    usermod -u 1000 www-data; \
+    groupmod -g 1000 www-data; \
+    # Removes files we won't use from /var/www
+    rm -rvf /var/www/*; \
+    # Gives ownership of /var/solr to www-data to allow index creation
+    mkdir /var/solr && chown -R www-data:www-data /var/solr; \
+    # Gives ownership of npm tmp dir to www-data
+    mkdir /var/www/.npm && chown -R www-data:www-data /var/www/.npm; \
+    # Gives ownership of composer tmp dir to www-data to allow index creation
+    mkdir -p /var/www/.composer/cache && chown -R www-data:www-data /var/www/.composer
+
+# Install SSPak and Composer
+RUN \
+    # Installs SSPAK for SilverStripe
+    # https://github.com/silverstripe/sspak
+    curl -sS https://silverstripe.github.io/sspak/install | php -- /usr/local/bin && \
+    # Composer binary
+    curl -sS https://getcomposer.org/installer | MEMORY_LIMIT=-1 php -- --filename=composer --install-dir=/usr/local/bin && \
+    # Makes binaries specified by composer accessible to bash
+    echo 'PATH=$PATH:/var/www/vendor/bin:/usr/local/bin' >> /etc/bash.bashrc && \
+    # Configure ls with colours
+    echo 'export LS_OPTIONS="--color=auto"' >> /etc/bash.bashrc && \
+    echo 'alias ls="ls $LS_OPTIONS"' >> /etc/bash.bashrc
 
 # Explicitly set the WORKDIR so that when we run drush commands via
 # `docker-compose exec` they will work because the default working dir is the
