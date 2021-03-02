@@ -9,7 +9,6 @@ SilverStripe\EnvironmentCheck\EnvironmentCheckSuite:
   registered_suites:
     health:
       - db
-
 ---
 Name: silverstripe-template-project/cwpcoresolrenvironmentcheck
 Only:
