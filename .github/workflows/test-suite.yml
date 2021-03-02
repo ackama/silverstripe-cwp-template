@@ -45,11 +45,20 @@ jobs:
       - name: Dump info about running containers (for future debugging)
         run: docker ps -a
 
-      - name: Install Silverstripe
+      # Setup Application
+      - name: Setup App
         run: ./bin/setup
 
-#      - name: Run tests
-#        working-directory: ./dev
-#        # Show symfony deprecation warnings but don't fail on them. Many
-#        # warnings come from plugins we depend on and don't control.
-#        run: docker-compose exec -T --env SYMFONY_DEPRECATIONS_HELPER=disabled drupal /root/run-ci.sh
+      # Setup Solr Indexing
+      - name: Setup Solr
+        run: ./bin/setup-solr
+
+      # Run Unit/Functional Tests
+      - name: Run tests
+        # Show symfony deprecation warnings but don't fail on them. Many
+        # warnings come from plugins we depend on and don't control.
+        run: ./ci/run-tests
+
+      # Stops and Remove running containers
+      - name: Stop Containers
+        run: docker-compose down -v
