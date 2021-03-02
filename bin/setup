@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+# Echo all commands just before they are executed
 set -e
 
 bash ./bin/composer install --no-scripts
