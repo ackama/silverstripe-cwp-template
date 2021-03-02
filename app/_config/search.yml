@@ -4,7 +4,6 @@ Name: silverstripe-template-project/searchindexes
 SilverStripe\FullTextSearch\Search\FullTextSearch:
   indexes:
     - SilverstripeTemplateProject\SearchIndex
-
 ---
 Name: silverstripe-template-project/searchconfig
 After: cwpsearch

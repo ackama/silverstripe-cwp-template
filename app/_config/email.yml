@@ -5,7 +5,7 @@ Only:
 ---
 SilverStripe\Control\Email\Email:
   admin_email:
-    no-reply@silverstripe-template-project.cwp.govt.nz: "SilverstripeTemplateProject"
+    no-reply@silverstripe-template-project.cwp.govt.nz: 'SilverstripeTemplateProject'
 ---
 
 ---
@@ -15,5 +15,7 @@ Only:
 ---
 SilverStripe\Control\Email\Email:
   admin_email:
-    no-reply@silverstripe-template-project-uat.cwp.govt.nz: "SilverstripeTemplateProject UAT"
+    no-reply@silverstripe-template-project-uat.cwp.govt.nz:
+      'SilverstripeTemplateProject UAT'
 ---
+
