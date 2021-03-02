@@ -23,7 +23,8 @@ definitions:
           - node
         script:
           - npm audit
-          - composer install --no-scripts --no-interaction --no-progress --no-suggest
+          - |
+            composer install --no-scripts --no-interaction --no-progress --no-suggest
           - npm ci
     - step: &run-tests-step
         name: Run tests
@@ -35,7 +36,8 @@ definitions:
           - npm
           - node
         script:
-          - composer install --no-scripts --no-interaction --no-progress --no-suggest
+          - |
+            composer install --no-scripts --no-interaction --no-progress --no-suggest
           - composer vendor-expose
           - npm ci
           - npm run package
@@ -57,13 +59,16 @@ definitions:
           - git checkout --track origin/deployment
           - git pull
           - git merge --no-commit --quiet main
-          - composer install --no-scripts --no-interaction --no-progress --no-suggest
+          - |
+            composer install --no-scripts --no-interaction --no-progress --no-suggest
           - composer vendor-expose
           - npm ci
           - npm run package
           - git add --force --all themes/silverstripe-template-theme/dist/
-          - git commit --allow-empty -m "Build version ${BITBUCKET_BUILD_NUMBER}"
-          - git tag -am "Tagging for release ${BITBUCKET_BUILD_NUMBER}" release-${BITBUCKET_BUILD_NUMBER}
+          - |
+            git commit --allow-empty -m "Build version ${BITBUCKET_BUILD_NUMBER}"
+          - |
+            git tag -am "Tagging for release ${BITBUCKET_BUILD_NUMBER}" release-${BITBUCKET_BUILD_NUMBER}
           - git push origin deployment
           - git push origin release-${BITBUCKET_BUILD_NUMBER}
     - step: &deploy-dev
@@ -73,7 +78,8 @@ definitions:
         script:
           - git checkout ${BITBUCKET_TAG}
           - git pull
-          - git push -f https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_ID.git HEAD:main
+          - |
+            git push -f https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_ID.git HEAD:main
     - step: &deploy-uat
         name: Deploys to UAT
         deployment: uat
@@ -148,9 +154,9 @@ pipelines:
 
   branches:
     main:
-     - step: *build-deps-caches
-     - step: *run-tests-step
-     - step: *build-release
+      - step: *build-deps-caches
+      - step: *run-tests-step
+      - step: *build-release
 
   tags:
     'release-*':
