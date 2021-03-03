@@ -8,7 +8,7 @@
     "docs": "https://www.cwp.govt.nz/developer-docs/en/2/"
   },
   "require": {
-    "php": ">=7.3.0",
+    "php": ">=7.4.0",
     "cwp/agency-extensions": "^2.4",
     "cwp/cwp-pdfexport": "^1.1",
     "cwp/cwp-recipe-cms": "^2.6",
