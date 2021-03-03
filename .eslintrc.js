@@ -10,8 +10,6 @@ const config = {
   },
   extends: ['ackama'],
   ignorePatterns: [
-    '/node_modules/',
-    '/vendor/',
     '/themes/watea/',
     '/themes/starter/',
     '/app/themes/silverstripe-template-theme/dist/'
