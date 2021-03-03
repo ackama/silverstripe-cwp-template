@@ -52,8 +52,6 @@ jobs:
 
       # Run Unit/Functional Tests
       - name: Run tests
-        # Show symfony deprecation warnings but don't fail on them. Many
-        # warnings come from plugins we depend on and don't control.
         run: docker-compose exec -T app ./ci/run-tests
 
       # Stops and Remove running containers
