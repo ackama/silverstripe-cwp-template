@@ -7,8 +7,10 @@
     "test": "tests"
   },
   "scripts": {
-    "watch": "mix --watch",
+    "watch": "mix watch",
     "build": "mix",
+    "watch-poll": "mix watch -- --watch-options-poll=1000",
+    "hot": "mix watch --hot",
     "package": "mix --production",
     "lint-js": "node_modules/.bin/eslint app/assets/js",
     "lint-sass": "node_modules/.bin/sass-lint -v",

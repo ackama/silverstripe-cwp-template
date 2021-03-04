@@ -1,5 +1,5 @@
 # Extend from current stable php apache
-FROM php:7.4-apache
+FROM php:7.4-apache AS silverstripe-app
 
 # Extra Repositories
 RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
@@ -208,3 +208,12 @@ ENTRYPOINT ["docker-php-entrypoint"]
 
 EXPOSE 80
 CMD ["apache2-foreground"]
+
+# Create container image that handles assets building
+FROM silverstripe-app AS silverstripe-frontend
+
+USER 1000:1000
+
+COPY --chown=1000:1000 dev/conf/frontend/watch /var/www/watch
+
+CMD ["/var/www/watch"]
