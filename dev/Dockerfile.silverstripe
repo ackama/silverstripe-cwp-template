@@ -161,15 +161,12 @@ RUN \
 WORKDIR /var/www
 
 # Give the www-data user a shell so that we can 'su' and 'sudo' to that user
-RUN chsh -s /bin/bash www-data
-
-## Make the www-user own all files in /var/www
-RUN chown -R www-data:www-data /var/www
+# And make the www-user own all files in /var/www
+RUN chsh -s /bin/bash www-data && \
+    chown -R www-data:www-data /var/www
 
 # Switch to the www-data (uid:1000:gid:1000) user
 USER 1000:1000
-
-## Install SilverStripe Dependencies
 
 # Copy the composer files in so they are available for the 'composer install'
 # command later in this file
