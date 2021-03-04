@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# Echo all commands just before they are executed
+set -x
+
+# Stop processing this script if any of the commands we run return an error
+# (i.e. exit with a non-zero status)
+set -e
+
+cd /var/www
+
+git add --force --all themes/silverstripe-template-theme/dist/
+git commit --allow-empty -m "Build version ${BITBUCKET_BUILD_NUMBER}"
+git tag -am "Tagging for release ${BITBUCKET_BUILD_NUMBER}" release-${BITBUCKET_BUILD_NUMBER}
+git push origin deployment
+git push origin release-${BITBUCKET_BUILD_NUMBER}
