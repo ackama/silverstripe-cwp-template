@@ -10,7 +10,7 @@
     "watch": "mix --watch",
     "build": "mix",
     "package": "mix --production",
-    "lint-js": "node_modules/.bin/eslint app/themes/silverstripe-template-theme/src/js",
+    "lint-js": "node_modules/.bin/eslint app/assets/js",
     "lint-sass": "node_modules/.bin/sass-lint -v",
     "svgsprite": "svg-sprite --config config/svgsprite.json ./src/svg-icons/*.svg",
     "prepare": "npm run ci:starter && npm run ci:watea",

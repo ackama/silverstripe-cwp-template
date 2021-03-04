@@ -46,10 +46,6 @@ replaceable after copying this project. Please do the following replacements:
   project.
 - Replace `SilverstripeTemplateProject` in all files with the namespace of your
   project.
-- Replace `silverstripe-template-theme` in all files with the name of your
-  theme.
-- Rename `themes/silverstripe-template-theme` to the name of the theme of your
-  project.
 
 #### Basic Configuration
 
