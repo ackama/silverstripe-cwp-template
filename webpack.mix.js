@@ -1,40 +1,15 @@
 const mix = require('laravel-mix');
-const path = require('path');
-
-mix.sourceMaps();
 
 mix
-  .sass(
-    'app/themes/silverstripe-template-theme/src/scss/main.scss',
-    'app/themes/silverstripe-template-theme/dist/css/'
-  )
-  .options({
-    processCssUrls: false
-  });
-
-mix.js(
-  'app/themes/silverstripe-template-theme/src/js/main.js',
-  'app/themes/silverstripe-template-theme/dist/js/'
-);
-
-mix.copyDirectory(
-  'app/themes/silverstripe-template-theme/src/ico',
-  'app/themes/silverstripe-template-theme/dist/ico/'
-);
-mix.copyDirectory(
-  'app/themes/silverstripe-template-theme/src/img',
-  'app/themes/silverstripe-template-theme/dist/img/'
-);
-mix.copyDirectory(
-  'app/themes/silverstripe-template-theme/src/fonts',
-  'app/themes/silverstripe-template-theme/dist/fonts/'
-);
+  .sass('app/assets/scss/main.scss', 'public/dist/css')
+  .sass('app/assets/scss/editor.scss', 'public/dist/css')
+  .js('app/assets/js/main.js', 'public/dist/js')
+  .copy('app/assets/fonts/*', 'public/dist/fonts')
+  .copy('app/assets/ico/*', 'public/dist/ico')
+  .copy('app/assets/img/*', 'public/dist/img');
 
 mix.webpackConfig({
   externals: {
     jquery: 'jQuery'
-  },
-  output: {
-    path: path.join(__dirname, '/')
   }
 });

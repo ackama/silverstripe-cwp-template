@@ -43,13 +43,6 @@
     ]
   },
   "extra": {
-    "expose": [
-      "themes/silverstripe-template-theme/dist/css",
-      "themes/silverstripe-template-theme/dist/fonts",
-      "themes/silverstripe-template-theme/dist/ico",
-      "themes/silverstripe-template-theme/dist/img",
-      "themes/silverstripe-template-theme/dist/js"
-    ],
     "project-files-installed": [
       "app/_config.php",
       "app/_config/mysite.yml"

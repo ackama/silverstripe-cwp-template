@@ -9,11 +9,7 @@ const config = {
     node: true
   },
   extends: ['ackama'],
-  ignorePatterns: [
-    '/themes/watea/',
-    '/themes/starter/',
-    '/app/themes/silverstripe-template-theme/dist/'
-  ]
+  ignorePatterns: ['/themes/watea/', '/themes/starter/', '/public/dist/']
 };
 
 module.exports = config;

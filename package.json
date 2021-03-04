@@ -10,7 +10,7 @@
     "watch": "mix --watch",
     "build": "mix",
     "package": "mix --production",
-    "lint-js": "node_modules/.bin/eslint app/themes/silverstripe-template-theme/src/js",
+    "lint-js": "node_modules/.bin/eslint app/assets/js",
     "lint-sass": "node_modules/.bin/sass-lint -v",
     "svgsprite": "svg-sprite --config config/svgsprite.json ./src/svg-icons/*.svg",
     "prepare": "npm run ci:starter && npm run ci:watea",
@@ -31,6 +31,7 @@
     "prettier-config-ackama": "^0.1.2",
     "prettier-plugin-packagejson": "^2.2.10",
     "prettier-plugin-sh": "^0.6.0",
+    "resolve-url-loader": "^3.1.2",
     "sass": "^1.32.8",
     "sass-loader": "^10.1.1"
   }

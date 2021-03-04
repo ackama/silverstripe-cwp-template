@@ -90,7 +90,7 @@ definitions:
           - composer vendor-expose
           - npm ci
           - npm run package
-          - git add --force --all themes/silverstripe-template-theme/dist/
+          - git add --force --all public/dist
           - |
             git commit --allow-empty -m "Build version ${BITBUCKET_BUILD_NUMBER}"
           - |
