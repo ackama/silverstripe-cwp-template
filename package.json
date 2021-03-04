@@ -31,6 +31,7 @@
     "prettier-config-ackama": "^0.1.2",
     "prettier-plugin-packagejson": "^2.2.10",
     "prettier-plugin-sh": "^0.6.0",
+    "resolve-url-loader": "^3.1.2",
     "sass": "^1.32.8",
     "sass-loader": "^10.1.1"
   }
