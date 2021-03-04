@@ -8,7 +8,7 @@
     <% if $RSSLink %>
         <link rel='alternate' type='application/rss+xml' title='RSS' href='$RSSLink'>
     <% end_if %>
-    <% require themedCss('dist/css/main.css') %>
+    <% require themedCss('dist/css/main') %>
     <% include Favicon %>
 </head>
 <body class="$ClassName
@@ -31,9 +31,9 @@
     <% include Footer %>
 </footer>
     <% require javascript('//code.jquery.com/jquery-3.3.1.min.js') %>
-    <% require themedJavascript('dist/js/main.js') %>
     <% require javascript('themes/starter/dist/js/main.js') %>
     <% require javascript('themes/watea/dist/js/main.js') %>
+    <% require themedJavascript('dist/js/main.js') %>
     <% include GoogleAnalytics %>
 </body>
 </html>
