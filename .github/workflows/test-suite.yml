@@ -28,8 +28,9 @@ jobs:
       - name: Build Containers
         run: docker-compose build --pull
 
+        # We only run the containers we need (ie. not the assets container)
       - name: Run Containers
-        run: docker-compose up -d
+        run: docker-compose up -d app database solr smtp
 
       - name: Wait for MariaDB container to start
         # MariaDB isn't fully ready until it has said "ready for connections"
