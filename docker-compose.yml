@@ -46,6 +46,9 @@ services:
       MAX_EXECUTION_TIME: 90
       MEMORY_LIMIT: 256M
 
+      # Composer Config
+      COMPOSER_MEMORY_LIMIT: -1
+
       # XDebug Config
       XDEBUG_PROFILER_ENABLE: 0
       XDEBUG_REMOTE_AUTOSTART: 0
@@ -55,8 +58,9 @@ services:
     volumes:
       - ./composer.json:/var/www/composer.json:cached
       - ./composer.lock:/var/www/composer.lock:cached
-      
+
       - ./package.json:/var/www/package.json:cached
+      - ./package-lock.json:/var/www/package-lock.json:cached
       - ./webpack.mix.js:/var/www/webpack.mix.js:cached
 
       - ./phpunit.xml:/var/www/phpunit.xml:cached
@@ -64,7 +68,11 @@ services:
       ##
       # Mount Application files
       - ./app:/var/www/app:cached
-      
+
+      ##
+      # CI Scripts
+      - ./ci:/var/www/ci:cached
+
       ##
       # Shared volume to handle solr configuration files
       - solr-data-sync:/var/solr:rw
@@ -100,7 +108,7 @@ services:
       #   contributed data.
       #
       # path-on-host:absolute-path-on-container
-      # - "./data/:/docker-entrypoint-initdb.d/"      
+      # - "./data/:/docker-entrypoint-initdb.d/"
   solr:
     image: geerlingguy/solr:4.x
     ports:

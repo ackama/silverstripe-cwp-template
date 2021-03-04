@@ -1,5 +1,3 @@
-image: prefernz/php-node:7.3
-
 definitions:
   services:
     mysql:
@@ -26,6 +24,34 @@ definitions:
           - |
             composer install --no-scripts --no-interaction --no-progress --no-suggest
           - npm ci
+
+    ## Experimental Docker Compose Approach to test and deploy
+    - step: &docker-build
+        name: Builds Docker Assets
+        services:
+          - docker
+        caches:
+          - docker
+        script:
+          - bin/get-docker-compose
+          - bin/docker-compose -f docker-compose-ci.yml build app
+        artifacts:
+          - /usr/local/bin/docker-compose
+
+    - step: &run-tests-step-in-docker
+        name: Run tests
+        services:
+          - docker
+          - mysql
+          - solr
+        caches:
+          - docker
+        script:
+          - export SENTRY_DSN=""
+          - export COMPOSE_INTERACTIVE_NO_CLI=1
+          - bin/docker-compose -f docker-compose-ci.yml -d up
+    # // Experimental
+
     - step: &run-tests-step
         name: Run tests
         image: prefernz/php-node:7.3
@@ -153,6 +179,9 @@ pipelines:
       - step: *run-tests-step
 
   branches:
+    'php-7.4-updates':
+     - step: *docker-build
+     - step: *run-tests-step-in-docker
     main:
       - step: *build-deps-caches
       - step: *run-tests-step
