@@ -9,6 +9,10 @@ set -e
 
 cd /var/www
 
+# We will be doing git operations from within this containers
+domain=$(git ls-remote --get-url origin | cut -d'@' -f2 | cut -d':' -f1)
+ssh-keyscan -t rsa $domain >> ~/.ssh/known_hosts
+
 # Build a release version by merging `main` into this PR
 git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
 git fetch origin
