@@ -41,6 +41,10 @@ jobs:
       - name: Dump info about running containers (for future debugging)
         run: docker ps -a
 
+      # Pull the main branch into the branch of your PR
+      - name: Build Merged Codebase
+        run: docker-compose exec -e -T app ./ci/build-merge
+
       # Setup Application
       - name: Setup App
         run: ./bin/setup
