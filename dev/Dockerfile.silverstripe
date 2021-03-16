@@ -195,12 +195,13 @@ COPY --chown=1000:1000 ["public", "/var/www/public"]
 # Copy application files
 COPY --chown=1000:1000 ["app", "/var/www/app"]
 
-# Install application
+# Install and build application
 # We use MEMORY_LIMIT=-1 because php.ini uses this ENV value,
 # It is set in docker-compose but not available on build
 RUN MEMORY_LIMIT=-1 composer install --no-scripts
-RUN MEMORY_LIMIT=-1 composer vendor-expose
 RUN npm ci
+RUN npm run build
+RUN MEMORY_LIMIT=-1 composer vendor-expose
 
 # Remove the composer and npm files from the image because we will mount our own
 # copies when we start the container. Removing the files should help avoid confusing
