@@ -90,7 +90,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install --yes --no-install-recommends
     echo 'localhost' > /etc/nullmailer/defaultdomain; \
     echo 'mail smtp --port=25' > /etc/nullmailer/remotes; \
     chmod 600 /etc/nullmailer/remotes
-COPY dev/conf/app/usr/local/etc/php/conf.d/sendmail.ini /usr/local/etc/php/conf.d/sendmail.ini
+COPY ["dev/conf/app/usr/local/etc/php/conf.d/sendmail.ini","/usr/local/etc/php/conf.d/sendmail.ini"]
 
 # Update npm and yarn
 RUN npm install -g npm
@@ -187,10 +187,10 @@ COPY --chown=1000:1000 ["./package-lock.json", "/var/www/package-lock.json"]
 
 # Copy public webroot. If this directory doesn't exist, the webroot will be
 # assumed to be the current working directory when installing
-COPY --chown=1000:1000 public /var/www/public
+COPY --chown=1000:1000 ["public", "/var/www/public"]
 
 # Copy application files
-COPY --chown=1000:1000 app /var/www/app
+COPY --chown=1000:1000 ["app", "/var/www/app"]
 
 # Install application
 # We use MEMORY_LIMIT=-1 because php.ini uses this ENV value,
