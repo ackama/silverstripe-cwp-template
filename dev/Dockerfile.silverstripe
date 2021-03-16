@@ -185,6 +185,9 @@ COPY --chown=1000:1000 ["./composer.lock", "/var/www/composer.lock"]
 COPY --chown=1000:1000 ["./package.json", "/var/www/package.json"]
 COPY --chown=1000:1000 ["./package-lock.json", "/var/www/package-lock.json"]
 
+# Copy webpack config
+COPY --chown=1000:1000 ["./webpack.mix.js", "/var/www/webpack.mix.js"]
+
 # Copy public webroot. If this directory doesn't exist, the webroot will be
 # assumed to be the current working directory when installing
 COPY --chown=1000:1000 ["public", "/var/www/public"]
