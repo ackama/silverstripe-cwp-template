@@ -39,13 +39,13 @@ RUN apt-get -y update; \
         iproute2 \
         nodejs
 
- # Install PHP extension: gd (PHP 7.4 version)
- RUN apt-get install -y \
-     libfreetype6-dev \
-     libjpeg62-turbo-dev \
-     libpng-dev \
-     && docker-php-ext-configure gd --with-freetype --with-jpeg \
-     && docker-php-ext-install -j$(nproc) gd
+# Install PHP extension: gd (PHP 7.4 version)
+RUN apt-get install -y \
+    libfreetype6-dev \
+    libjpeg62-turbo-dev \
+    libpng-dev \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install -j$(nproc) gd
 
 # Install internationalisation
 RUN docker-php-ext-configure intl extension; \
