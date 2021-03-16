@@ -15,7 +15,9 @@ RUN apt-get -y update; \
         apt-utils\
         ssl-cert \
         mariadb-client \
+        zlib1g-dev \
         libicu-dev \
+        libpng-dev \
         libjpeg-dev \
         libwebp-dev \
         locales \
@@ -23,6 +25,7 @@ RUN apt-get -y update; \
         g++ \
         gnupg \
         build-essential \
+        zip \
         unzip \
         curl \
         git \
