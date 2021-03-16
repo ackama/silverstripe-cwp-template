@@ -207,7 +207,7 @@ RUN MEMORY_LIMIT=-1 composer vendor-expose
 # copies when we start the container. Removing the files should help avoid confusing
 # situations where the old files are still around because we made an error with
 # the volume mount.
-RUN rm composer.json composer.lock package.json package-lock.json
+RUN rm composer.json composer.lock package.json package-lock.json webpack.mix.js
 
 # Go back to the user
 USER root:root
