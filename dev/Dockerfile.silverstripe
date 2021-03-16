@@ -39,7 +39,11 @@ RUN apt-get -y update; \
         iproute2 \
         nodejs
 
-# Install PHP extension: gd (PHP 7.4 version)
+####
+# PHP Extensions
+#
+
+# PHP extension: gd (PHP 7.4 version)
 RUN apt-get install -y \
     libfreetype6-dev \
     libjpeg62-turbo-dev \
@@ -47,11 +51,11 @@ RUN apt-get install -y \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd
 
-# Install internationalisation
+# PHP extension: internationalisation
 RUN docker-php-ext-configure intl extension; \
     docker-php-ext-install -j$(nproc) intl
 
-# Install ZIP support for php
+# PHP extension: ZIP support
 RUN apt-get install -y \
         zlib1g-dev \
         zip \
@@ -59,27 +63,27 @@ RUN apt-get install -y \
     docker-php-ext-configure zip --with-libzip; \
     docker-php-ext-install -j$(nproc) zip
 
-# Installs various PHP Extensions
+# PHP extension: Misc
 RUN docker-php-ext-install -j$(nproc) \
         pdo_mysql \
         mysqli \
         bcmath
 
-# Install xdebug support
+# PHP extension: xdebug support
 RUN pecl install xdebug; \
     docker-php-ext-enable xdebug;
 
-# # Install PHP extension: redis
+# PHP extension: redis
 # RUN pecl install redis-5.1.1 \
 #     && pecl install xdebug-2.8.1 \
 #     && docker-php-ext-enable redis xdebug
 
-# # Install PHP extension: memcached
+# PHP extension: memcached
 # RUN apt-get install -y libmemcached-dev zlib1g-dev \
 #     && pecl install memcached-2.2.0 \
 #     && docker-php-ext-enable memcached
 
-# Install and configure nullmailer and php sendmail
+# Install and configure: nullmailer + php sendmail
 RUN DEBIAN_FRONTEND=noninteractive apt-get install --yes --no-install-recommends \
         mailutils \
         nullmailer; \
@@ -92,7 +96,7 @@ COPY dev/conf/app/usr/local/etc/php/conf.d/sendmail.ini /usr/local/etc/php/conf.
 RUN npm install -g npm
 RUN npm install -g yarn
 
-# Remove trash
+# Clean up!
 RUN apt-get clean; \
     apt-get autoclean; \
     rm -r /var/lib/apt/lists/*
