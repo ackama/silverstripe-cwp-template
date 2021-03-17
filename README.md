@@ -25,6 +25,18 @@ wiki page to better customise this README
 
 ### Project Setup
 
+#### Platform Requirements
+
+The docker environment that is provided will be running these versions and you
+can use those utilities within the containers directly through scripts available
+in `./bin/` to work. They are documented here and as dotfiles in the repository
+if you want or need to match your host environment's versions
+
+- PHP: 7.3
+- COMPOSER: 1
+- NODE: 14
+- NPM: 6
+
 #### Clone and Clean
 
 Clone this repository, remove its `.git` directory and initialise it as a new
