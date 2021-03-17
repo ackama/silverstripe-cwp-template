@@ -152,10 +152,8 @@ RUN \
     # Installs SSPAK for SilverStripe
     # https://github.com/silverstripe/sspak
     curl -sS https://silverstripe.github.io/sspak/install | php -- /usr/local/bin && \
-    # Composer binary
-    curl -sS https://getcomposer.org/installer | MEMORY_LIMIT=-1 php -- --filename=composer --install-dir=/usr/local/bin && \
-    # Lock composer version to 2
-    MEMORY_LIMIT=-1 /usr/local/bin/composer self-update --2 && \
+    # Composer binary  + install version 1
+    curl -sS https://getcomposer.org/installer | MEMORY_LIMIT=-1 php -- --filename=composer --install-dir=/usr/local/bin --1 && \
     # Makes binaries specified by composer accessible to bash
     echo 'PATH=$PATH:/var/www/vendor/bin:/usr/local/bin' >> /etc/bash.bashrc && \
     # Configure ls with colours
