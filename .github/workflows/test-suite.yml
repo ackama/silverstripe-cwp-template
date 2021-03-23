@@ -13,6 +13,11 @@ jobs:
       - name: Check out this repo
         uses: actions/checkout@v2
 
+      # Setup SSH Agent
+      - uses: webfactory/ssh-agent@v0.5.1
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
       # In this step, this action saves a list of existing images,
       # the cache is created without them in the post run.
       # It also restores the cache if it exists.
