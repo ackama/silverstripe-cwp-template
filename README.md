@@ -23,6 +23,21 @@ Also refer to our
 [Ackama README Template](https://github.com/ackama/wiki/wiki/Ackama-README-Template)
 wiki page to better customise this README
 
+### Project Setup
+
+#### Create your project from this repository
+
+Execute the following to create a new project based of this repository, updated
+to the latest version of the SilverStripe stack
+
+```bash
+$ composer create-project --no-install --remove-vcs ackama/silverstripe-cwp-template your-cwp-project
+$ cd your-cwp-project
+```
+
+In order to start a project using this template, execute the following:
+
+
 #### Platform Requirements
 
 The docker environment that is provided will be running these versions and you
@@ -34,16 +49,6 @@ if you want or need to match your host environment's versions
 - COMPOSER: 1
 - NODE: 14
 - NPM: 6
-
-### Project Setup
-
-#### Create from Template
-
-In order to start a project using this template, execute the following:
-
-```sh
-composer create-project --no-install --remove-vcs ackama/silverstripe-cwp-template your-cwp-project
-```
 
 #### Rename Resources
 
