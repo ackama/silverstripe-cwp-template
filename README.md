@@ -25,6 +25,21 @@ wiki page to better customise this README
 
 ### Project Setup
 
+After cloning the project, you will have to commit this into a repository. You
+can safely commit all created files. The available pipeline uses `main` as the
+development branch and `deployment` as production. `deployment` is completely
+managed by the pipeline after the initial setup.
+
+```sh
+$ git init .
+$ git commit -m "Project Initialisation"
+$ git branch -M main
+$ git push origin main
+$ git branch -C deployment
+$ git push origin deployment
+$ git branch -D deployment
+```
+
 #### Platform Requirements
 
 The docker environment that is provided will be running these versions and you
