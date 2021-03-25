@@ -86,6 +86,13 @@ CWP_STACK_ID
 CWP_DASH_TOKEN
 ```
 
+If you are planning to enable a dev environment in Heroku, you will also need to setup
+
+```dotenv
+HEROKU_APP_ID
+HEROKU_API_KEY
+```
+
 It is also possible to execute CI locally. Refer to
 [Running tests](#running-tests)
 

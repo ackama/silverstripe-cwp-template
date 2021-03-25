@@ -7,8 +7,6 @@ set -x
 # (i.e. exit with a non-zero status)
 set -e
 
-cd /var/www
-
 npm run package
 
 composer vendor-expose
