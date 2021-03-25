@@ -23,23 +23,6 @@ Also refer to our
 [Ackama README Template](https://github.com/ackama/wiki/wiki/Ackama-README-Template)
 wiki page to better customise this README
 
-### Project Setup
-
-After cloning the project, you will have to commit this into a repository. You
-can safely commit all created files. The available pipeline uses `main` as the
-development branch and `deployment` as production. `deployment` is completely
-managed by the pipeline after the initial setup.
-
-```sh
-$ git init .
-$ git commit -m "Project Initialisation"
-$ git branch -M main
-$ git push origin main
-$ git branch -C deployment
-$ git push origin deployment
-$ git branch -D deployment
-```
-
 #### Platform Requirements
 
 The docker environment that is provided will be running these versions and you
@@ -52,27 +35,59 @@ if you want or need to match your host environment's versions
 - NODE: 14
 - NPM: 6
 
-#### Clone and Clean
+### Project Setup
 
-Clone this repository, remove its `.git` directory and initialise it as a new
-repository:
+#### Create from Template
 
-```
-$ git clone git@github.com:ackama/silverstripe-cwp-template.git your-project
-$ cd your-project
-$ rm -rf .git
-$ git init
+In order to start a project using this template, execute the following:
+
+```sh
+composer create-project --no-install --remove-vcs ackama/silverstripe-cwp-template your-cwp-project
 ```
 
 #### Rename Resources
 
-Defaults for namespaces and prefixes have been chosen so they are easily
-replaceable after copying this project. Please do the following replacements:
+Defaults for namespaces and prefixes have been set so they are easily
+replaceable after initialising the project. Please do the following
+replacements:
 
 - Replace `silverstripe-template-project` in all files with the name of your
   project.
 - Replace `SilverstripeTemplateProject` in all files with the namespace of your
   project.
+
+#### Repository Setup
+
+After cloning the project, you will have to commit this into a repository. You
+can safely commit all created files. The available pipeline uses `main` as the
+development branch and `deployment` as production. `deployment` is completely
+managed by the pipeline after the initial setup.
+
+```shell
+git init .
+git commit -m "Project Initialisation"
+git branch -M main
+git push origin main
+git branch -C deployment
+git push origin deployment
+git branch -D deployment
+```
+
+#### Pipeline Setup
+
+The project already contains CI/CD scripts and definitions for Github Actions,
+for running automated tests and automated deployment. You will need to setup the
+following pipeline variables:
+
+```dotenv
+SSH_PRIVATE_KEY
+CWP_DASH_USER
+CWP_STACK_ID
+CWP_DASH_TOKEN
+```
+
+It is also possible to execute CI locally. Refer to
+[Running tests](#running-tests)
 
 #### Basic Configuration
 
@@ -239,7 +254,11 @@ sake dev/tasks/Solr_Reindex
 
 ### Running tests
 
-In `bin/console` run `vendor/bin/phpunit`
+Use the following to run your tests locally
+
+```shell
+docker-compose exec app -T ci/run-tests
+```
 
 ### Deploying outside of CWP
 
