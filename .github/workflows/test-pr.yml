@@ -1,4 +1,4 @@
-name: Test Suite
+name: Tests Suite
 
 on:
   pull_request:
@@ -7,20 +7,26 @@ on:
       - 'release/**'
 
 jobs:
-  build:
+  test-pr:
     runs-on: ubuntu-latest
+    env:
+      HEAD_REF: ${{ github.head_ref }}
+      BASE_REF: ${{ github.base_ref }}
     steps:
+      ## Prevent multiple workflows running
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.5.0
+        with:
+          access_token: ${{ github.token }}
+
       - name: Check out repository
         uses: actions/checkout@v2
-
-#      # Setup SSH Agent
-#      - uses: webfactory/ssh-agent@v0.5.1
-#        with:
-#          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+        with:
+          fetch-depth: 0
 
       # Pull the main branch into the branch of your PR
       - name: Build Merged Codebase
-        run: ./ci/build-codebase-test
+        run: ./ci/build-test-codebase
 
       # In this step, this action saves a list of existing images,
       # the cache is created without them in the post run.
