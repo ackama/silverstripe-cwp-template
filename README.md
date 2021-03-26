@@ -39,7 +39,7 @@ $ composer create-project --no-install --remove-vcs ackama/silverstripe-cwp-temp
 $ cd your-cwp-project
 ```
 
-In order to start a project using this template, execute the following:
+Cloning this repository and working from there will not work as expected.
 
 #### Platform Requirements
 
