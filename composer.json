@@ -50,7 +50,8 @@
       "mv ci-pipelines/butbucket-pipelines ./",
       "rmdir ci-pipelines",
       "composer update",
-      "npm install"
+      "npm install",
+      "composer config --unset scripts.post-create-project-cmd"
     ]
   },
   "config": {
