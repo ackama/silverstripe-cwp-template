@@ -37,7 +37,6 @@ $ cd your-cwp-project
 
 In order to start a project using this template, execute the following:
 
-
 #### Platform Requirements
 
 The docker environment that is provided will be running these versions and you
@@ -91,17 +90,30 @@ CWP_STACK_ID
 CWP_DASH_TOKEN
 ```
 
-If you are planning to enable a Staging environment in Heroku, you will also need to setup:
+If you are planning to enable a Staging environment in Heroku, you will also
+need to setup:
 
 ```dotenv
 HEROKU_APP_ID
 HEROKU_API_KEY
+
+# Use dev or uat for SS_ENVIRONMENT_TYPE
+# Setting this to prod will cause a DNS error
+SS_ENVIRONMENT_TYPE
+
+# Because heroku workers run behind proxies, SilverStripe needs to be aware of
+# their IPs, otherwise requests will error. You can use * as the value if you
+# are not worried security at initial stage
+SS_TRUSTED_PROXY_IPS
+
+# Use your heroku URL
 SS_BASE_URL
+
+# Standard Database configuration
 SS_DATABASE_SERVER
 SS_DATABASE_USERNAME
 SS_DATABASE_PASSWORD
 SS_DATABASE_NAME
-SS_TRUSTED_PROXY_IPS
 ```
 
 It is also possible to execute CI locally. Refer to
