@@ -45,7 +45,7 @@ can use those utilities within the containers directly through scripts available
 in `./bin/` to work. They are documented here and as dotfiles in the repository
 if you want or need to match your host environment's versions
 
-- PHP: 7.3
+- PHP: 7.4
 - COMPOSER: 1
 - NODE: 14
 - NPM: 6
@@ -91,11 +91,17 @@ CWP_STACK_ID
 CWP_DASH_TOKEN
 ```
 
-If you are planning to enable a dev environment in Heroku, you will also need to setup
+If you are planning to enable a Staging environment in Heroku, you will also need to setup:
 
 ```dotenv
 HEROKU_APP_ID
 HEROKU_API_KEY
+SS_BASE_URL
+SS_DATABASE_SERVER
+SS_DATABASE_USERNAME
+SS_DATABASE_PASSWORD
+SS_DATABASE_NAME
+SS_TRUSTED_PROXY_IPS
 ```
 
 It is also possible to execute CI locally. Refer to
