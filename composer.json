@@ -46,6 +46,9 @@
   },
   "scripts": {
     "post-create-project-cmd": [
+      "mv ci-pipelines/.github ./github",
+      "mv ci-pipelines/butbucket-pipelines ./",
+      "rmdir ci-pipelines",
       "composer update",
       "npm install"
     ]
