@@ -7,8 +7,6 @@ set -x
 # (i.e. exit with a non-zero status)
 set -e
 
-cd /var/www
-
 # Creates a deployment request for Production
 # The deployment gets queued and will be waiting for approval
 # from a release manager in CWP's dashboard,

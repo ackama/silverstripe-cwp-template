@@ -15,4 +15,4 @@ if [ "$sspak_file" ]; then
   sh ./bin/sspak load "$sspak_file" --drop-db
 fi
 
-bash ./bin/sake dev/build 'flush=1'
+bash ./bin/sake dev/build flush=1

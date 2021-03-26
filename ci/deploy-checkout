@@ -7,11 +7,9 @@ set -x
 # (i.e. exit with a non-zero status)
 set -e
 
-pwd
-ls -al public/
-ls -al public/dist/
+# Make sure we are on the latest version
+git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
+git fetch origin
+git checkout ${TAG}
 
-composer install --no-scripts --no-interaction --no-progress --no-suggest
-npm ci
-npm run package
-composer vendor-expose
+git status

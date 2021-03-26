@@ -7,8 +7,6 @@ set -x
 # (i.e. exit with a non-zero status)
 set -e
 
-cd /var/www
-
 # This script attempts a git fetch in CWP, waits for it to be ready
 # and creates a deployment request.
 

@@ -7,12 +7,10 @@ set -x
 # (i.e. exit with a non-zero status)
 set -e
 
-# Build a release version by merging `main` into this PR
+# Build a test version from `main`
 git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
 git fetch origin
-git checkout --track origin/deployment
 git pull
-git merge --no-commit --quiet origin/main
 
 # Git status for debugging
 git status
