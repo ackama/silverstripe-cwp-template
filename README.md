@@ -23,6 +23,10 @@ Also refer to our
 [Ackama README Template](https://github.com/ackama/wiki/wiki/Ackama-README-Template)
 wiki page to better customise this README
 
+## Purpose
+
+_Fill in purpose of this project_
+
 ### Project Setup
 
 #### Create your project from this repository
@@ -90,13 +94,21 @@ CWP_STACK_ID
 CWP_DASH_TOKEN
 ```
 
+##### Heroku Setup
+
 If you are planning to enable a Staging environment in Heroku, you will also
-need to setup:
+need to set some values in your Pipeline and Heroku environments:
+
+Pipeline
 
 ```dotenv
 HEROKU_APP_ID
 HEROKU_API_KEY
+```
 
+Heroku
+
+```dotenv
 # Use dev or uat for SS_ENVIRONMENT_TYPE
 # Setting this to prod will cause a DNS error
 SS_ENVIRONMENT_TYPE
@@ -119,15 +131,10 @@ SS_DATABASE_NAME
 It is also possible to execute CI locally. Refer to
 [Running tests](#running-tests)
 
-#### Basic Configuration
+#### Other Configuration
 
-- Remove the `.gitignore` lines for `package-lock.json` and `composer.lock`
 - Replace your Sentry DSN, or remove file otherwise: `./app/_config/sentry.yml`
 - Configure `app/_config/email.yml` according to your project.
-
-## Purpose
-
-_Fill in purpose of this project_
 
 ## Operations
 
