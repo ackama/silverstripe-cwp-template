@@ -7,23 +7,10 @@ set -x
 # (i.e. exit with a non-zero status)
 set -e
 
-git --version
-
 # Build a release version by merging `main` into `deployment`
 git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
 git fetch origin
-git --no-pager log --graph --oneline
-
 git checkout --track origin/$DEPLOY_REF
-
-git pull
-
-git --no-pager log --graph --oneline
-
-git diff
-
-git --no-pager diff origin/deployment origin/main
-
 git merge --no-commit --quiet --allow-unrelated-histories origin/$MAIN_REF
 
 # Git status for debugging
