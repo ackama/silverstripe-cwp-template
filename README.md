@@ -31,6 +31,8 @@ _Fill in purpose of this project_
 
 #### Create your project from this repository
 
+* Remove this title after setting up the project, to avoid confusion *
+
 Execute the following to create a new project based of this repository, updated
 to the latest version of the SilverStripe stack
 
@@ -55,6 +57,8 @@ if you want or need to match your host environment's versions
 
 #### Rename Resources
 
+* Remove this title after setting up the project, to avoid confusion *
+
 Defaults for namespaces and prefixes have been set so they are easily
 replaceable after initialising the project. Please do the following
 replacements:
@@ -66,6 +70,8 @@ replacements:
 
 #### Repository Setup
 
+* Remove this title after setting up the project, to avoid confusion *
+
 After cloning the project, you will have to commit this into a repository. You
 can safely commit all created files. The available pipeline uses `main` as the
 development branch and `deployment` as production. `deployment` is completely
@@ -73,6 +79,7 @@ managed by the pipeline after the initial setup.
 
 ```shell
 git init .
+git add .
 git commit -m "Project Initialisation"
 git branch -M main
 git push origin main
@@ -88,7 +95,11 @@ for running automated tests and automated deployment. You will need to setup the
 following pipeline variables:
 
 ```dotenv
+# Private Key to be used to push and interact with your repository.
+# Must have write permissions
 SSH_PRIVATE_KEY
+
+# CWP setup
 CWP_DASH_USER
 CWP_STACK_ID
 CWP_DASH_TOKEN
@@ -182,10 +193,10 @@ Secrets are stored encrypted in the CI's config
 - docker
 - docker-compose
 
-### Running the app
+### Running this app
 
 Clone the project:
-`git clone git@github.com:ackama/silverstripe-cwp-template.git`
+`git clone git@github.com:ackama/your-cwp-project.git`
 
 Once the project is cloned, execute this command:
 
@@ -202,8 +213,8 @@ Once the project is cloned, execute this command:
     localhost URL
 - Use `bin/console` to log in into your local dev environment
 - If you want to have access to your dependencies in the host, run
-  `composer install --no-scripts`, `composer vendor-expose` and `npm ci`. These
-  directories are not shared to avoid lowering performance.
+  `composer install --no-scripts`, `npm ci` and `composer vendor-expose`. These
+  directories are not shared into your containers to avoid lowering performance.
 - Run `npm run watch` in a separate view to build your assets in realtime.
 - Whenever you make changes in your silverstripe app or theme, run
   `sake dev/build flush=1`
@@ -232,7 +243,8 @@ process.
   pipeline.
 - Secondly, CWP deploys the silverstripe project.
 
-Although running the realtime packager or the bundler should render the same
+Although 
+the realtime packager or the bundler should render the same
 results, if you find yourself needing to build your project as it would be built
 by CI/CD for debugging purposes, run these:
 
@@ -275,8 +287,8 @@ the usage of Solr will fail. You do this by accessing your console and
 executing:
 
 ```
-sake dev/tasks/Solr_Configure
-sake dev/tasks/Solr_Reindex
+sake dev/tasks/Solr_Configure flush=1
+sake dev/tasks/Solr_Reindex flush=1
 ```
 
 ### Load a working copy from other environments
