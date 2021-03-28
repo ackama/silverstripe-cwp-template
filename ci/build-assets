@@ -7,10 +7,6 @@ set -x
 # (i.e. exit with a non-zero status)
 set -e
 
-pwd
-ls -al public/
-ls -al public/dist/
-
 composer install --no-scripts --no-interaction --no-progress --no-suggest
 npm ci
 npm run package
