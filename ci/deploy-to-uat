@@ -27,8 +27,11 @@ STATUS=$(cat response.json | jq -r '.data.attributes.status')
 # to Complete. If status is not achieved we loop again.
 while [ "$STATUS" != "Complete" ]; do
   sleep 15
-  STATUS=$(curl --silent -X GET -u $CWP_DASH_USER:$CWP_DASH_TOKEN $LINK \
-    -H 'Content-Type: application/json' -H 'Accept: application/json' | jq -r '.data.attributes.status')
+  STATUS=$(
+    curl --silent -X GET -u $CWP_DASH_USER:$CWP_DASH_TOKEN $LINK \
+      -H 'Content-Type: application/json' -H 'Accept: application/json' \
+      | jq -r '.data.attributes.status'
+  )
 done
 
 # Finally we create a deployment request for UAT
