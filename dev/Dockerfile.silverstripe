@@ -173,25 +173,17 @@ RUN chsh -s /bin/bash www-data && \
 # Switch to the www-data (uid:1000:gid:1000) user
 USER 1000:1000
 
-# Copy the composer files in so they are available for the 'composer install'
-# command later in this file
-COPY --chown=1000:1000 ["./composer.json", "/var/www/composer.json"]
-COPY --chown=1000:1000 ["./composer.lock", "/var/www/composer.lock"]
-
+## Dependencies and Build Routines
+# Copy the composer files in so they are available for 'composer install'
 # Copy the npm files in so they are available for the 'npm ci'
-# command later in this file
-COPY --chown=1000:1000 ["./package.json", "/var/www/package.json"]
-COPY --chown=1000:1000 ["./package-lock.json", "/var/www/package-lock.json"]
-
 # Copy webpack config
-COPY --chown=1000:1000 ["./webpack.mix.js", "/var/www/webpack.mix.js"]
+COPY --chown=1000:1000 ["./composer.json", "./composer.lock", "./package.json", "./package-lock.json", "./webpack.mix.js", "/var/www/"]
 
+## Application Files
 # Copy public webroot. If this directory doesn't exist, the webroot will be
 # assumed to be the current working directory when installing
-COPY --chown=1000:1000 ["public", "/var/www/public"]
-
-# Copy application files
-COPY --chown=1000:1000 ["app", "/var/www/app"]
+COPY --chown=1000:1000 ["./public", "/var/www/public"]
+COPY --chown=1000:1000 ["./app", "/var/www/app"]
 
 # Install and build application
 # We use MEMORY_LIMIT=-1 because php.ini uses this ENV value,
