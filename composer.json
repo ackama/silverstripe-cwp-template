@@ -1,6 +1,6 @@
 {
   "name": "ackama/silverstripe-cwp-template",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "type": "silverstripe-recipe",
   "description": "Ackama Silverstripe CWP Template",
   "homepage": "https://ackama.com",
@@ -48,7 +48,7 @@
   "scripts": {
     "post-create-project-cmd": [
       "mv ci-pipelines/.github ./.github",
-      "mv ci-pipelines/bitbucket-pipelines ./bitbucket-pipelines",
+      "mv ci-pipelines/bitbucket-pipelines.yml ./",
       "rmdir ci-pipelines",
       "composer update",
       "npm install",
