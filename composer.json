@@ -1,5 +1,6 @@
 {
   "name": "ackama/silverstripe-cwp-template",
+  "version": "0.1.0",
   "type": "silverstripe-recipe",
   "description": "Ackama Silverstripe CWP Template",
   "homepage": "https://ackama.com",
