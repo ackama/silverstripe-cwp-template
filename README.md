@@ -23,39 +23,129 @@ Also refer to our
 [Ackama README Template](https://github.com/ackama/wiki/wiki/Ackama-README-Template)
 wiki page to better customise this README
 
+## Purpose
+
+_Fill in purpose of this project_
+
 ### Project Setup
 
-#### Clone and Clean
+#### Create your project from this repository
 
-Clone this repository, remove its `.git` directory and initialise it as a new
-repository:
+* Remove this title after setting up the project, to avoid confusion *
 
+Execute the following to create a new project based of this repository, updated
+to the latest version of the SilverStripe stack
+
+```bash
+$ composer create-project --no-install --remove-vcs ackama/silverstripe-cwp-template your-cwp-project
+$ cd your-cwp-project
 ```
-$ git clone git@github.com:ackama/silverstripe-cwp-template.git your-project
-$ cd your-project
-$ rm -rf .git
-$ git init
-```
+
+Cloning this repository and working from there will not work as expected.
+
+#### Platform Requirements
+
+The docker environment that is provided will be running these versions and you
+can use those utilities within the containers directly through scripts available
+in `./bin/` to work. They are documented here and as dotfiles in the repository
+if you want or need to match your host environment's versions
+
+- PHP: 7.4
+- COMPOSER: 1
+- NODE: 14
+- NPM: 6
 
 #### Rename Resources
 
-Defaults for namespaces and prefixes have been chosen so they are easily
-replaceable after copying this project. Please do the following replacements:
+* Remove this title after setting up the project, to avoid confusion *
+
+Defaults for namespaces and prefixes have been set so they are easily
+replaceable after initialising the project. Please do the following
+replacements:
 
 - Replace `silverstripe-template-project` in all files with the name of your
   project.
 - Replace `SilverstripeTemplateProject` in all files with the namespace of your
   project.
 
-#### Basic Configuration
+#### Repository Setup
 
-- Remove the `.gitignore` lines for `package-lock.json` and `composer.lock`
+* Remove this title after setting up the project, to avoid confusion *
+
+After cloning the project, you will have to commit this into a repository. You
+can safely commit all created files. The available pipeline uses `main` as the
+development branch and `deployment` as production. `deployment` is completely
+managed by the pipeline after the initial setup.
+
+```shell
+git init .
+git add .
+git commit -m "Project Initialisation"
+git branch -M main
+git push origin main
+git branch -C deployment
+git push origin deployment
+git branch -D deployment
+```
+
+#### Pipeline Setup
+
+The project already contains CI/CD scripts and definitions for Github Actions,
+for running automated tests and automated deployment. You will need to setup the
+following pipeline variables:
+
+```dotenv
+# Private Key to be used to push and interact with your repository.
+# Must have write permissions
+SSH_PRIVATE_KEY
+
+# CWP setup
+CWP_DASH_USER
+CWP_STACK_ID
+CWP_DASH_TOKEN
+```
+
+##### Heroku Setup
+
+If you are planning to enable a Staging environment in Heroku, you will also
+need to set some values in your Pipeline and Heroku environments:
+
+Pipeline
+
+```dotenv
+HEROKU_APP_ID
+HEROKU_API_KEY
+```
+
+Heroku
+
+```dotenv
+# Use dev or uat for SS_ENVIRONMENT_TYPE
+# Setting this to prod will cause a DNS error
+SS_ENVIRONMENT_TYPE
+
+# Because heroku workers run behind proxies, SilverStripe needs to be aware of
+# their IPs, otherwise requests will error. You can use * as the value if you
+# are not worried security at initial stage
+SS_TRUSTED_PROXY_IPS
+
+# Use your heroku URL
+SS_BASE_URL
+
+# Standard Database configuration
+SS_DATABASE_SERVER
+SS_DATABASE_USERNAME
+SS_DATABASE_PASSWORD
+SS_DATABASE_NAME
+```
+
+It is also possible to execute CI locally. Refer to
+[Running tests](#running-tests)
+
+#### Other Configuration
+
 - Replace your Sentry DSN, or remove file otherwise: `./app/_config/sentry.yml`
 - Configure `app/_config/email.yml` according to your project.
-
-## Purpose
-
-_Fill in purpose of this project_
 
 ## Operations
 
@@ -103,10 +193,10 @@ Secrets are stored encrypted in the CI's config
 - docker
 - docker-compose
 
-### Running the app
+### Running this app
 
 Clone the project:
-`git clone git@github.com:ackama/silverstripe-cwp-template.git`
+`git clone git@github.com:ackama/your-cwp-project.git`
 
 Once the project is cloned, execute this command:
 
@@ -123,8 +213,8 @@ Once the project is cloned, execute this command:
     localhost URL
 - Use `bin/console` to log in into your local dev environment
 - If you want to have access to your dependencies in the host, run
-  `composer install --no-scripts`, `composer vendor-expose` and `npm ci`. These
-  directories are not shared to avoid lowering performance.
+  `composer install --no-scripts`, `npm ci` and `composer vendor-expose`. These
+  directories are not shared into your containers to avoid lowering performance.
 - Run `npm run watch` in a separate view to build your assets in realtime.
 - Whenever you make changes in your silverstripe app or theme, run
   `sake dev/build flush=1`
@@ -153,7 +243,8 @@ process.
   pipeline.
 - Secondly, CWP deploys the silverstripe project.
 
-Although running the realtime packager or the bundler should render the same
+Although 
+the realtime packager or the bundler should render the same
 results, if you find yourself needing to build your project as it would be built
 by CI/CD for debugging purposes, run these:
 
@@ -196,8 +287,8 @@ the usage of Solr will fail. You do this by accessing your console and
 executing:
 
 ```
-sake dev/tasks/Solr_Configure
-sake dev/tasks/Solr_Reindex
+sake dev/tasks/Solr_Configure flush=1
+sake dev/tasks/Solr_Reindex flush=1
 ```
 
 ### Load a working copy from other environments
@@ -212,7 +303,11 @@ sake dev/tasks/Solr_Reindex
 
 ### Running tests
 
-In `bin/console` run `vendor/bin/phpunit`
+Use the following to run your tests locally
+
+```shell
+docker-compose exec app -T ci/run-tests
+```
 
 ### Deploying outside of CWP
 

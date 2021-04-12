@@ -1,6 +1,5 @@
 {
-  "name": "silverstripe-template-project-website",
-  "version": "1.0.0",
+  "name": "silverstripe-template-project",
   "private": true,
   "description": "silverstripe-template-project website",
   "directories": {
@@ -19,14 +18,14 @@
   },
   "prettier": "prettier-config-ackama",
   "devDependencies": {
-    "@types/eslint": "^7.2.6",
-    "eslint": "^7.20.0",
+    "@types/eslint": "^7.2.9",
+    "eslint": "^7.24.0",
     "eslint-config-ackama": "^2.1.0",
     "eslint-plugin-eslint-comments": "^3.2.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^3.3.1",
-    "laravel-mix": "^6.0.13",
+    "laravel-mix": "^6.0.16",
     "prettier": "^2.2.1",
     "prettier-config-ackama": "^0.1.2",
     "prettier-plugin-packagejson": "^2.2.10",
