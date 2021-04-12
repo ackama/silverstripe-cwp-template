@@ -37,7 +37,7 @@ Execute the following to create a new project based of this repository, updated
 to the latest version of the SilverStripe stack
 
 ```bash
-$ composer create-project --no-install --remove-vcs ackama/silverstripe-cwp-template your-cwp-project
+$ composer create-project --no-install ackama/silverstripe-cwp-template your-cwp-project
 $ cd your-cwp-project
 ```
 
@@ -77,9 +77,12 @@ can safely commit all created files. The available pipeline uses `main` as the
 development branch and `deployment` as production. `deployment` is completely
 managed by the pipeline after the initial setup.
 
+_Don't forget to give appropriate access to your team!_
+
 ```shell
 git init .
 git add .
+git remote add origin git@github.com:ackama/your-cwp-project.git
 git commit -m "Project Initialisation"
 git branch -M main
 git push origin main
