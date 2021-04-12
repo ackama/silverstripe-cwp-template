@@ -11,7 +11,8 @@ set -e
 # and creates a deployment request.
 
 # Creates a git fetch request
-curl -X POST -u $CWP_DASH_USER:$CWP_DASH_TOKEN \
+# shellcheck disable=SC2086
+curl -X POST -u "$CWP_DASH_USER":$CWP_DASH_TOKEN \
   https://dash.cwp.govt.nz/naut/project/$CWP_STACK_ID/git/fetches \
   -H 'Content-Type: application/json' -H 'Accept: application/json' >response.json
 
@@ -28,7 +29,8 @@ STATUS=$(cat response.json | jq -r '.data.attributes.status')
 while [ "$STATUS" != "Complete" ]; do
   sleep 15
   STATUS=$(
-    curl --silent -X GET -u $CWP_DASH_USER:$CWP_DASH_TOKEN $LINK \
+    # shellcheck disable=SC2086
+    curl --silent -X GET -u "$CWP_DASH_USER":"$CWP_DASH_TOKEN" "$LINK" \
       -H 'Content-Type: application/json' -H 'Accept: application/json' \
       | jq -r '.data.attributes.status'
   )
@@ -37,8 +39,8 @@ done
 # Finally we create a deployment request for UAT
 # The deployment bypasses approvals and gets deployed immediately,
 # as per the `bypass_and_start` parameter in the request.
-curl -X POST -u $CWP_DASH_USER:$CWP_DASH_TOKEN \
-  https://dash.cwp.govt.nz/naut/project/$CWP_STACK_ID/environment/uat/deploys \
+curl -X POST -u "$CWP_DASH_USER":"$CWP_DASH_TOKEN" \
+  https://dash.cwp.govt.nz/naut/project/"$CWP_STACK_ID"/environment/uat/deploys \
   -H 'Content-Type: application/json' -H 'Accept: application/json' \
   --data "{ \
             \"ref\": \"${BITBUCKET_TAG}\", \

@@ -10,6 +10,6 @@ set -e
 # Make sure we are on the latest version
 git config remote.origin.fetch "+refs/heads/*:refs/remotes/origin/*"
 git fetch origin
-git checkout ${TAG}
+git checkout "${TAG}"
 
 git status

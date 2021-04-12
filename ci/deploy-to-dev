@@ -16,12 +16,12 @@ fi
 
 # This script deploys our app to Heroku as a Dev environment
 # CWP does not provide a DEV environment by default
-git push -f https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_ID.git HEAD:refs/heads/main
+git push -f https://heroku:"$HEROKU_API_KEY"@git.heroku.com/"$HEROKU_APP_ID".git HEAD:refs/heads/main
 
 # Heroku deployment stuff
 curl https://cli-assets.heroku.com/install.sh | sh
 
 # Reinstall vendors and expose vendor assets
-heroku run --app $HEROKU_APP_ID "composer install --no-scripts"
-heroku run --app $HEROKU_APP_ID "composer vendor-expose"
-heroku run --app $HEROKU_APP_ID "sake dev/build flush=1"
+heroku run --app "$HEROKU_APP_ID" "composer install --no-scripts"
+heroku run --app "$HEROKU_APP_ID" "composer vendor-expose"
+heroku run --app "$HEROKU_APP_ID" "sake dev/build flush=1"

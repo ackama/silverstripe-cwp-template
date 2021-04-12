@@ -10,6 +10,6 @@ set -e
 # Takes built assets and commits them into a release commit
 git add --force --all public/dist
 git commit --allow-empty -m "Build version ${BUILD_NUMBER}"
-git tag -am "Tagging for release ${BUILD_NUMBER}" release-${BUILD_NUMBER}
+git tag -am "Tagging for release ${BUILD_NUMBER}" release-"${BUILD_NUMBER}"
 git push origin deployment
-git push origin release-${BUILD_NUMBER}
+git push origin release-"${BUILD_NUMBER}"
